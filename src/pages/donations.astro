@@ -1,0 +1,352 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+import ContactFooter from '../components/ContactFooter.astro';
+---
+
+<Layout
+	title="Support Team 619 | Cavalier Robotics Donations"
+	description="Help fuel the next generation of engineers. Your donation to Cavalier Robotics Team 619 funds equipment, competition fees, and hands-on STEM education for Charlottesville-area students."
+>
+	<div class="page-wrap">
+		<TopNav />
+
+		<main>
+			<!-- ── Hero ──────────────────────────────────────────────────────── -->
+			<section class="donate-hero glass-card section reveal-delay">
+				<div class="donate-hero-copy">
+					<span class="chip">FRC Team 619 • Charlottesville, VA</span>
+					<h1>Build the Engineers<br />of Tomorrow</h1>
+					<p class="lead">
+						Every robot we build starts with a donation. Your support gives Charlottesville-area
+						high schoolers access to real engineering tools, world-class mentors, and the chance
+						to compete on a national stage — experiences that shape careers and change lives.
+					</p>
+					<div class="btn-row">
+						<a class="btn btn-primary" href="#donate-form">Donate Now</a>
+						<a class="btn btn-secondary" href="/about">About the Team</a>
+					</div>
+				</div>
+				<img
+					class="donate-hero-art"
+					src="/artwork/person-riding-619-robot.png"
+					alt=""
+					aria-hidden="true"
+					loading="eager"
+				/>
+			</section>
+
+			<!-- ── Impact stats ───────────────────────────────────────────────── -->
+			<section class="section" id="impact">
+				<h2 class="section-heading">Your Impact by the Numbers</h2>
+				<div class="impact-grid">
+					<div class="glass-card impact-stat">
+						<span class="stat-number">20+</span>
+						<span class="stat-label">Years of STEM Education</span>
+					</div>
+					<div class="glass-card impact-stat">
+						<span class="stat-number">100s</span>
+						<span class="stat-label">Students Shaped</span>
+					</div>
+					<div class="glass-card impact-stat">
+						<span class="stat-number">10+</span>
+						<span class="stat-label">Schools Represented</span>
+					</div>
+					<div class="glass-card impact-stat">
+						<span class="stat-number">10+</span>
+						<span class="stat-label">Mentors &amp; Volunteers</span>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── What your donation funds ──────────────────────────────────── -->
+			<section class="section" id="what-we-fund">
+				<h2 class="section-heading">Where Your Money Goes</h2>
+				<div class="fund-grid">
+					<article class="glass-card fund-card">
+						<div class="fund-icon">⚙️</div>
+						<h3>Tools &amp; Equipment</h3>
+						<p>
+							Power tools, CNC machines, 3D printers, electronics, and the raw materials needed
+							to design and manufacture a competition-ready robot from scratch every season.
+						</p>
+					</article>
+					<article class="glass-card fund-card">
+						<div class="fund-icon">🏆</div>
+						<h3>Competition Fees &amp; Travel</h3>
+						<p>
+							Registration, transportation, and lodging for regional events — and, when we qualify,
+							the FIRST Robotics World Championship. No student is left behind due to cost.
+						</p>
+					</article>
+					<article class="glass-card fund-card">
+						<div class="fund-icon">📚</div>
+						<h3>Outreach &amp; Education</h3>
+						<p>
+							Demos, workshops, and community events that bring robotics to younger students and
+							inspire the next generation of engineers right here in Charlottesville.
+						</p>
+					</article>
+				</div>
+			</section>
+
+			<!-- ── Compelling quote ───────────────────────────────────────────── -->
+			<section class="section">
+				<blockquote class="glass-card donate-quote">
+					<p>
+						"Robotics gave me real engineering confidence before I ever set foot in a college
+						classroom. The mentors, the late nights in the shop, the pressure of competition —
+						I wouldn't trade any of it."
+					</p>
+					<footer>— Team 619 Alumni</footer>
+				</blockquote>
+			</section>
+
+			<!-- ── Donation form ──────────────────────────────────────────────── -->
+			<section class="section" id="donate-form">
+				<h2 class="section-heading">Make a Donation</h2>
+				<p class="donate-sub">
+					Donations are processed securely through Zeffy, a 100% free fundraising platform.
+					Every dollar goes directly to the team.
+				</p>
+				<div class="form-wrap glass-card">
+					<iframe
+						title="Cavalier Robotics Donation Form"
+						src="https://www.zeffy.com/en-US/embed/donation-form/f71bca5c-a1de-456f-8832-c6fc5c7ae273"
+						style="width:100%;border:none;min-height:640px;"
+						loading="lazy"
+						allowpaymentrequest
+					></iframe>
+				</div>
+			</section>
+
+			<!-- ── Thank you ──────────────────────────────────────────────────── -->
+			<section class="section">
+				<div class="thankyou-panel glass-card">
+					<img
+						class="thankyou-art"
+						src="/artwork/duck-swimming-cavalier-robotics.png"
+						alt=""
+						aria-hidden="true"
+						loading="lazy"
+					/>
+					<div>
+						<h2>Thank You</h2>
+						<p>
+							On behalf of every student on Team 619, thank you for believing in what we do.
+							Your generosity keeps our shop running, our robots competing, and our students
+							dreaming bigger.
+						</p>
+						<div class="btn-row" style="margin-top: 1rem;">
+							<a class="btn btn-secondary" href="mailto:info@carobotics.org">Get in Touch</a>
+							<a class="btn btn-secondary" href="/about">Meet the Team</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<ContactFooter />
+	</div>
+</Layout>
+
+<style>
+	/* ── Hero ──────────────────────────────────────────────────────────── */
+	.donate-hero {
+		margin-top: 1.2rem;
+		padding: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 2rem;
+		align-items: center;
+		overflow: hidden;
+		border-top: 3px solid var(--orange);
+	}
+
+	.donate-hero h1 {
+		font-size: clamp(2rem, 1.4rem + 2.5vw, 3.2rem);
+		color: var(--blue);
+		margin-bottom: 0.9rem;
+		line-height: 1.15;
+	}
+
+	.lead {
+		color: var(--ink-muted);
+		font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem);
+		line-height: 1.65;
+		margin-bottom: 1.4rem;
+	}
+
+	.donate-hero-art {
+		height: clamp(10rem, 8rem + 6vw, 17rem);
+		width: auto;
+		display: block;
+		filter: drop-shadow(0 6px 18px rgba(18, 24, 39, 0.12));
+	}
+
+	/* ── Impact stats ──────────────────────────────────────────────────── */
+	.impact-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0.75rem;
+	}
+
+	.impact-stat {
+		padding: 1.1rem 0.9rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.3rem;
+		border-top: 3px solid var(--orange);
+		text-align: center;
+	}
+
+	.stat-number {
+		font-family: 'Saira Semi Condensed', sans-serif;
+		font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.4rem);
+		font-weight: 800;
+		color: var(--blue);
+		line-height: 1;
+		letter-spacing: 0.03em;
+	}
+
+	.stat-label {
+		font-size: 0.68rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--ink-faint);
+	}
+
+	/* ── Fund cards ────────────────────────────────────────────────────── */
+	.fund-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+	}
+
+	.fund-card {
+		padding: 1.5rem 1.4rem;
+		border-top: 3px solid var(--blue-mid);
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+	}
+
+	.fund-icon {
+		font-size: 1.8rem;
+		line-height: 1;
+	}
+
+	.fund-card h3 {
+		font-size: 1rem;
+		color: var(--blue);
+	}
+
+	.fund-card p {
+		color: var(--ink-muted);
+		font-size: 0.875rem;
+		line-height: 1.65;
+	}
+
+	/* ── Pull quote ────────────────────────────────────────────────────── */
+	.donate-quote {
+		padding: 1.8rem clamp(1.4rem, 1rem + 2vw, 3rem);
+		border-left: 4px solid var(--orange);
+		margin: 0;
+	}
+
+	.donate-quote p {
+		font-family: 'Saira Semi Condensed', sans-serif;
+		font-size: clamp(1.05rem, 0.9rem + 0.8vw, 1.4rem);
+		font-weight: 500;
+		color: var(--blue);
+		line-height: 1.55;
+		font-style: italic;
+		margin-bottom: 0.75rem;
+	}
+
+	.donate-quote footer {
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.07em;
+		text-transform: uppercase;
+		color: var(--ink-faint);
+	}
+
+	/* ── Donation form ─────────────────────────────────────────────────── */
+	.donate-sub {
+		color: var(--ink-muted);
+		font-size: 0.9rem;
+		margin-bottom: 1.2rem;
+	}
+
+	.form-wrap {
+		padding: 0;
+		overflow: hidden;
+	}
+
+	/* ── Thank you panel ───────────────────────────────────────────────── */
+	.thankyou-panel {
+		padding: clamp(1.4rem, 1rem + 2vw, 2.4rem);
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 2rem;
+		align-items: center;
+		border-top: 3px solid var(--blue-mid);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.thankyou-art {
+		height: clamp(7rem, 5rem + 5vw, 12rem);
+		width: auto;
+		display: block;
+		opacity: 0.9;
+		filter: drop-shadow(0 4px 12px rgba(18, 24, 39, 0.1));
+	}
+
+	.thankyou-panel h2 {
+		font-size: clamp(1.4rem, 1rem + 1.5vw, 2rem);
+		color: var(--blue);
+		margin-bottom: 0.6rem;
+	}
+
+	.thankyou-panel p {
+		color: var(--ink-muted);
+		line-height: 1.7;
+	}
+
+	/* ── Responsive ────────────────────────────────────────────────────── */
+	@media (max-width: 900px) {
+		.donate-hero {
+			grid-template-columns: 1fr;
+		}
+
+		.donate-hero-art {
+			display: none;
+		}
+
+		.impact-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.fund-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.thankyou-panel {
+			grid-template-columns: 1fr;
+		}
+
+		.thankyou-art {
+			height: 7rem;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.impact-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>

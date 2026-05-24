@@ -1,0 +1,403 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+import { getEntry } from 'astro:content';
+
+const page = await getEntry('pages', 'home');
+if (!page) throw new Error('Missing home page content');
+const home = page.data;
+
+const socialIcons: Record<string, string> = {
+	facebook: `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>`,
+	youtube:  `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.47a2.78 2.78 0 0 0-1.95 1.95C1 8.12 1 12 1 12s0 3.88.46 5.58a2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95C23 15.88 23 12 23 12s0-3.88-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>`,
+	instagram:`<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
+};
+const getIcon = (label: string) => socialIcons[label.toLowerCase()] ?? '';
+---
+
+<Layout
+	title="Contact Us | Cavalier Robotics Team 619"
+	description="Get in touch with Cavalier Robotics Team 619. Ask about joining the team, sponsorship opportunities, or general questions."
+>
+	<div class="page-wrap">
+		<TopNav />
+
+		<main>
+			<!-- ── Page hero ─────────────────────────────────────────────────── -->
+			<section class="contact-hero glass-card section reveal-delay">
+				<div>
+					<span class="chip">FRC Team 619 • Charlottesville, VA</span>
+					<h1>Contact Us</h1>
+					<p class="lead">
+						Whether you want to join the team, explore sponsorship, or just say hello —
+						we'd love to hear from you. Send a message below or reach us directly.
+					</p>
+				</div>
+				<img
+					class="contact-hero-art"
+					src="/artwork/duck-with-wrench.png"
+					alt=""
+					aria-hidden="true"
+					loading="eager"
+				/>
+			</section>
+
+			<!-- ── Two-column layout: form + details ─────────────────────────── -->
+			<section class="section contact-layout">
+
+				<!-- Form -->
+				<div class="glass-card form-card">
+					<h2 class="card-heading">Send a Message</h2>
+					<form id="contact-form" class="contact-form" action="https://formspree.io/f/mqejlnqq" method="POST">
+						<!-- Honeypot: bots fill this in, Formspree silently rejects -->
+						<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+						<div class="form-row">
+							<div class="form-field">
+								<label for="cf-name">Name</label>
+								<input type="text" id="cf-name" name="name" required placeholder="Your name" />
+							</div>
+							<div class="form-field">
+								<label for="cf-email">Email</label>
+								<input type="email" id="cf-email" name="email" required placeholder="your@email.com" />
+							</div>
+						</div>
+						<div class="form-field">
+							<label for="cf-subject">Subject</label>
+							<input type="text" id="cf-subject" name="subject" placeholder="e.g. Joining the team, Sponsorship…" />
+						</div>
+						<div class="form-field">
+							<label for="cf-message">Message</label>
+							<textarea id="cf-message" name="message" required rows="5" placeholder="What's on your mind?"></textarea>
+						</div>
+						<div class="form-actions">
+							<button type="submit" class="btn btn-primary" id="cf-submit">Send Message</button>
+						</div>
+						<p class="form-error" id="cf-error" hidden>
+							Something went wrong. Please try again or email us directly at
+							<a href={`mailto:${home.contact.email}`}>{home.contact.email}</a>.
+						</p>
+					</form>
+					<div class="form-success" id="cf-success" hidden>
+						<p>Message sent! We'll get back to you soon.</p>
+					</div>
+				</div>
+
+				<!-- Contact details -->
+				<aside class="contact-details">
+					<div class="glass-card detail-card">
+						<h2 class="card-heading">Contact Info</h2>
+						<dl class="contact-list">
+							<div>
+								<dt>Email</dt>
+								<dd><a href={`mailto:${home.contact.email}`}>{home.contact.email}</a></dd>
+							</div>
+							<div>
+								<dt>Phone</dt>
+								<dd><a href={`tel:${home.contact.phone.replace(/[^\d+]/g, '')}`}>{home.contact.phone}</a></dd>
+							</div>
+							<div>
+								<dt>Mailing Address</dt>
+								<dd>{home.contact.mailingAddress}</dd>
+							</div>
+							<div>
+								<dt>Workshop</dt>
+								<dd>{home.contact.workshopAddress}</dd>
+							</div>
+						</dl>
+					</div>
+
+					<div class="glass-card detail-card">
+						<h2 class="card-heading">Follow Us</h2>
+						<div class="social-row">
+							{home.social.map((item) => (
+								<a href={item.href} target="_blank" rel="noreferrer">
+									<span set:html={getIcon(item.label)} />
+									{item.label}
+								</a>
+							))}
+						</div>
+					</div>
+				</aside>
+			</section>
+		</main>
+
+		<!-- Minimal footer on contact page — no need to recurse -->
+		<footer class="site-footer">
+			<p>© {new Date().getFullYear()} Cavalier Robotics FRC Team 619 · Charlottesville, VA</p>
+		</footer>
+	</div>
+</Layout>
+
+<style>
+	/* ── Hero ──────────────────────────────────────────────────────────── */
+	.contact-hero {
+		margin-top: 1.2rem;
+		padding: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 2rem;
+		align-items: center;
+		border-top: 3px solid var(--orange);
+	}
+
+	.contact-hero h1 {
+		font-size: clamp(2rem, 1.4rem + 2.5vw, 3.2rem);
+		color: var(--blue);
+		margin-bottom: 0.9rem;
+	}
+
+	.lead {
+		color: var(--ink-muted);
+		font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem);
+		line-height: 1.65;
+	}
+
+	.contact-hero-art {
+		height: clamp(8rem, 6rem + 5vw, 13rem);
+		width: auto;
+		filter: drop-shadow(0 6px 18px rgba(18, 24, 39, 0.12));
+	}
+
+	/* ── Two-column layout ─────────────────────────────────────────────── */
+	.contact-layout {
+		display: grid;
+		grid-template-columns: 1fr 340px;
+		gap: 1.25rem;
+		align-items: start;
+	}
+
+	/* ── Form card ─────────────────────────────────────────────────────── */
+	.form-card,
+	.detail-card {
+		padding: 1.5rem;
+	}
+
+	.form-card {
+		border-top: 3px solid var(--orange);
+	}
+
+	.card-heading {
+		font-size: 1rem;
+		font-weight: 800;
+		color: var(--blue);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		margin-bottom: 1.2rem;
+	}
+
+	.contact-form {
+		display: grid;
+		gap: 0.75rem;
+	}
+
+	.form-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.75rem;
+	}
+
+	.form-field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.3rem;
+	}
+
+	.form-field label {
+		font-size: 0.72rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--ink-faint);
+	}
+
+	.form-field input,
+	.form-field textarea {
+		background: var(--bg);
+		border: 1px solid var(--border);
+		border-radius: 0.3rem;
+		padding: 0.55rem 0.75rem;
+		font-family: inherit;
+		font-size: 0.875rem;
+		color: var(--ink);
+		transition: border-color 150ms ease, box-shadow 150ms ease;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.form-field input:focus,
+	.form-field textarea:focus {
+		outline: none;
+		border-color: var(--blue-mid);
+		box-shadow: 0 0 0 3px rgba(47, 94, 175, 0.15);
+	}
+
+	.form-field textarea {
+		resize: vertical;
+		min-height: 7rem;
+	}
+
+	.form-actions {
+		margin-top: 0.25rem;
+	}
+
+	.form-error {
+		color: #c0392b;
+		font-size: 0.85rem;
+		margin: 0.5rem 0 0;
+	}
+
+	.form-error a { color: inherit; }
+
+	.form-success {
+		padding: 1rem 1.2rem;
+		background: rgba(47, 94, 175, 0.08);
+		border: 1px solid rgba(47, 94, 175, 0.2);
+		border-radius: 0.3rem;
+		border-left: 3px solid var(--blue-mid);
+	}
+
+	.form-success p {
+		margin: 0;
+		color: var(--blue);
+		font-weight: 600;
+		font-size: 0.9rem;
+	}
+
+	/* ── Details sidebar ───────────────────────────────────────────────── */
+	.contact-details {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.detail-card {
+		border-top: 3px solid var(--blue-mid);
+	}
+
+	.contact-list {
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 0.9rem;
+	}
+
+	.contact-list dt {
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--ink-faint);
+		font-size: 0.68rem;
+		font-weight: 700;
+	}
+
+	.contact-list dd {
+		margin: 0.25rem 0 0;
+		font-weight: 600;
+		font-size: 0.875rem;
+		color: var(--ink);
+		line-height: 1.4;
+	}
+
+	.contact-list a {
+		color: var(--blue-mid);
+		text-decoration: none;
+	}
+
+	.contact-list a:hover { text-decoration: underline; }
+
+	/* ── Social row ────────────────────────────────────────────────────── */
+	.social-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.social-row a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		text-decoration: none;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.07em;
+		text-transform: uppercase;
+		color: var(--blue);
+		border: 1px solid var(--border);
+		border-radius: 0.25rem;
+		padding: 0.35rem 0.75rem;
+		background: var(--surface);
+		transition: background-color 150ms ease, border-color 150ms ease;
+	}
+
+	.social-row a:hover {
+		background: rgba(35, 45, 75, 0.06);
+		border-color: rgba(35, 45, 75, 0.25);
+	}
+
+	.social-row a > span {
+		transform: translateY(0px);
+		flex-shrink: 0;
+		display: flex;
+	}
+
+	/* ── Footer ────────────────────────────────────────────────────────── */
+	.site-footer {
+		text-align: center;
+		padding: 2rem 0 1.5rem;
+		color: var(--ink-faint);
+		font-size: 0.78rem;
+	}
+
+	/* ── Responsive ────────────────────────────────────────────────────── */
+	@media (max-width: 900px) {
+		.contact-hero {
+			grid-template-columns: 1fr;
+		}
+
+		.contact-hero-art {
+			display: none;
+		}
+
+		.contact-layout {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 500px) {
+		.form-row {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
+<script>
+	const form = document.getElementById('contact-form') as HTMLFormElement | null;
+	if (form) {
+		const submitBtn = document.getElementById('cf-submit') as HTMLButtonElement;
+		const errorMsg  = document.getElementById('cf-error')  as HTMLElement;
+		const successEl = document.getElementById('cf-success') as HTMLElement;
+
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			submitBtn.disabled = true;
+			submitBtn.textContent = 'Sending…';
+			errorMsg.hidden = true;
+
+			try {
+				const res = await fetch(form.action, {
+					method: 'POST',
+					body: new FormData(form),
+					headers: { 'Accept': 'application/json' },
+				});
+				if (res.ok) {
+					form.hidden = true;
+					successEl.hidden = false;
+				} else {
+					throw new Error('Non-OK response');
+				}
+			} catch {
+				errorMsg.hidden = false;
+				submitBtn.disabled = false;
+				submitBtn.textContent = 'Send Message';
+			}
+		});
+	}
+</script>

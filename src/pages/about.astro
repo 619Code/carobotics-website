@@ -1,0 +1,285 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+import ContactFooter from '../components/ContactFooter.astro';
+---
+
+<Layout title="About Us | Cavalier Robotics Team 619" description="Learn about Cavalier Robotics Team 619, our FIRST Robotics program, and the benefits of joining.">
+	<div class="page-wrap">
+		<TopNav />
+
+		<main>
+			<!-- ── Page hero ─────────────────────────────────────────────────── -->
+			<section class="about-hero glass-card section reveal-delay">
+				<div class="about-hero-copy">
+					<span class="chip">FRC Team 619 • Charlottesville, VA</span>
+					<h1>About Cavalier Robotics</h1>
+					<p class="lead">
+						Team 619 is a non-profit high school robotics team built on passion for engineering,
+						collaboration, and community. We compete in the FIRST Robotics Competition and welcome
+						students from schools across the Charlottesville area.
+					</p>
+					<div class="btn-row">
+						<a class="btn btn-primary" href="mailto:info@carobotics.org">Join the Team</a>
+						<a class="btn btn-secondary" href="/#sponsors">Our Sponsors</a>
+					</div>
+				</div>
+				<img
+					class="about-hero-art"
+					src="/artwork/person-riding-robot-on-water.png"
+					alt=""
+					aria-hidden="true"
+					loading="eager"
+				/>
+			</section>
+
+			<!-- ── About the team ────────────────────────────────────────────── -->
+			<section class="section" id="team">
+				<h2 class="section-heading">About Our Team</h2>
+				<div class="about-panel glass-card">
+					<p>
+						Team 619: Cavalier Robotics is a non-profit high school robotics team based in
+						Charlottesville, Virginia. Our team is made up of students from various schools in the
+						area who share a passion for robotics and STEM education.
+					</p>
+					<p>
+						We are proud to be part of <strong>FIRST</strong> — an organisation that promotes STEM
+						learning among young people worldwide. As a member of our team, you will develop a wide
+						range of skills including CAD, programming, machining, electronics, marketing, business
+						planning, and more.
+					</p>
+					<p>
+						Whether you want to build robots, write software, design graphics, or manage operations,
+						there is a place for you on Team 619.
+					</p>
+				</div>
+			</section>
+
+			<!-- ── About FIRST ───────────────────────────────────────────────── -->
+			<section class="section" id="first">
+				<h2 class="section-heading">About FIRST</h2>
+				<div class="first-grid">
+					<div class="glass-card first-stat">
+						<span class="stat-number">619</span>
+						<span class="stat-label">Team Number</span>
+					</div>
+					<div class="glass-card first-stat">
+						<span class="stat-number">2001</span>
+						<span class="stat-label">Founded</span>
+					</div>
+					<div class="glass-card first-stat">
+						<span class="stat-number">20+</span>
+						<span class="stat-label">Years Competing</span>
+					</div>
+					<div class="glass-card first-stat">
+						<span class="stat-number">6 wks</span>
+						<span class="stat-label">Build Season</span>
+					</div>
+				</div>
+				<div class="about-panel glass-card" style="margin-top: 1rem;">
+					<p>
+						Since 2001, Cavalier Robotics has participated in the FIRST Robotics Competition as
+						FRC Team 619. Every year the FRC build season begins at "kick-off" in early January and
+						runs for six weeks. During this intense period, we design and construct a roughly
+						130-lb robot to compete in that season's challenge.
+					</p>
+					<p>
+						After build season, we attend regional competitions throughout the spring. In our
+						over 20-year history we have competed in Richmond, Atlanta, Washington D.C., Myrtle
+						Beach, and the FRC Worlds Championship in both Detroit and Houston.
+					</p>
+					<p>
+						FIRST Robotics is a <em>"global robotics community preparing young people for the
+						future."</em> Teams design, program, and build a robot from a standard kit of parts
+						under a common ruleset to play a themed head-to-head challenge — while also building
+						community partnerships and promoting STEM locally.
+					</p>
+					<div class="btn-row" style="margin-top: 0.5rem;">
+						<a class="btn btn-secondary" href="https://www.firstinspires.org/robotics/frc" target="_blank" rel="noreferrer">
+							Learn More About FIRST
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── Benefits ──────────────────────────────────────────────────── -->
+			<section class="section" id="benefits">
+				<h2 class="section-heading">Benefits of Joining</h2>
+				<div class="benefits-grid">
+					<article class="glass-card benefit-card">
+						<img class="benefit-art" src="/artwork/duck-with-wrench.png" alt="" aria-hidden="true" loading="lazy" />
+						<h3>Hands-On STEM Experience</h3>
+						<p>
+							Work alongside mentors with real-world engineering experience. Design parts in CAD,
+							machine them in our shop, wire electrical systems, and write production code — all
+							before graduation.
+						</p>
+					</article>
+					<article class="glass-card benefit-card">
+						<img class="benefit-art" src="/artwork/boy-with-magnified-glass-2026-comp-year.png" alt="" aria-hidden="true" loading="lazy" />
+						<h3>Great STEM Community</h3>
+						<p>
+							Join a team of curious, driven students and dedicated adult mentors. Build lasting
+							friendships, collaborate under pressure, and connect with the broader FIRST community
+							at regional and world-level competitions.
+						</p>
+					</article>
+					<article class="glass-card benefit-card">
+						<img class="benefit-art" src="/artwork/duck-with-screwdriver.png" alt="" aria-hidden="true" loading="lazy" />
+						<h3>College &amp; Career Ready</h3>
+						<p>
+							FIRST alumni stand out in college applications and engineering internships. Leadership
+							roles, competition records, and real project portfolios give you a meaningful edge when
+							it matters most.
+						</p>
+					</article>
+				</div>
+			</section>
+		</main>
+
+		<ContactFooter />
+	</div>
+</Layout>
+
+<style>
+	/* ── About hero ──────────────────────────────────────────────────────── */
+	.about-hero {
+		margin-top: 1.2rem;
+		padding: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 2rem;
+		align-items: center;
+		overflow: hidden;
+		border-top: 3px solid var(--orange);
+	}
+
+	.about-hero h1 {
+		font-size: clamp(2rem, 1.4rem + 2.5vw, 3.2rem);
+		color: var(--blue);
+		margin-bottom: 0.9rem;
+	}
+
+	.lead {
+		color: var(--ink-muted);
+		font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem);
+		line-height: 1.65;
+		margin-bottom: 1.4rem;
+	}
+
+	.about-hero-art {
+		height: clamp(10rem, 8rem + 6vw, 17rem);
+		width: auto;
+		display: block;
+		filter: drop-shadow(0 6px 18px rgba(18, 24, 39, 0.12));
+	}
+
+	/* ── Shared prose panel ──────────────────────────────────────────────── */
+	.about-panel {
+		padding: clamp(1.2rem, 1rem + 1vw, 1.8rem);
+		display: grid;
+		gap: 0.9rem;
+		border-left: 3px solid var(--blue-mid);
+	}
+
+	.about-panel p {
+		color: var(--ink-muted);
+		line-height: 1.7;
+	}
+
+	/* ── FIRST stats row ─────────────────────────────────────────────────── */
+	.first-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0.75rem;
+	}
+
+	.first-stat {
+		padding: 1.1rem 0.9rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.3rem;
+		border-top: 3px solid var(--orange);
+		text-align: center;
+	}
+
+	.stat-number {
+		font-family: 'Saira Semi Condensed', sans-serif;
+		font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.4rem);
+		font-weight: 800;
+		color: var(--blue);
+		line-height: 1;
+		letter-spacing: 0.03em;
+	}
+
+	.stat-label {
+		font-size: 0.68rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--ink-faint);
+	}
+
+	/* ── Benefits grid ───────────────────────────────────────────────────── */
+	.benefits-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+	}
+
+	.benefit-card {
+		padding: 1.4rem;
+		padding-right: 5.5rem;
+		border-top: 3px solid var(--blue-mid);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.benefit-card h3 {
+		font-size: 1rem;
+		color: var(--blue);
+		margin-bottom: 0.6rem;
+	}
+
+	.benefit-card p {
+		color: var(--ink-muted);
+		font-size: 0.875rem;
+		line-height: 1.65;
+	}
+
+	.benefit-art {
+		position: absolute;
+		right: 0.8rem;
+		top: 0.5rem;
+		height: 5rem;
+		width: auto;
+		pointer-events: none;
+		opacity: 0.9;
+	}
+
+	/* ── Responsive ──────────────────────────────────────────────────────── */
+	@media (max-width: 900px) {
+		.about-hero {
+			grid-template-columns: 1fr;
+		}
+
+		.about-hero-art {
+			display: none;
+		}
+
+		.first-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.benefits-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.first-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>

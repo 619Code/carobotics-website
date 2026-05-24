@@ -1,0 +1,613 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+import SponsorsGrid from '../components/SponsorsGrid.astro';
+---
+
+<Layout
+	title="Sponsorships | Cavalier Robotics Team 619"
+	description="Partner with Cavalier Robotics FRC Team 619. Learn about sponsorship tiers, benefits, and how your support shapes the next generation of engineers in Central Virginia."
+>
+	<div class="page-wrap">
+		<TopNav />
+
+		<main>
+			<!-- ── Hero ──────────────────────────────────────────────────────── -->
+			<section class="sponsor-hero glass-card section reveal-delay">
+				<div class="sponsor-hero-copy">
+					<span class="chip">FRC Team 619 • 501(c)(3) Non-Profit</span>
+					<h1>Sponsor Our Mission</h1>
+					<p class="lead">
+						Cavalier Robotics was founded in 2001 to fill the pre-college STEM education void
+						in Central Virginia. Today, over 25 students and mentors work side-by-side to
+						build robots, compete nationally, and carry that experience into STEM careers.
+						Your sponsorship makes all of it possible.
+					</p>
+					<div class="btn-row">
+						<a class="btn btn-primary" href="#tiers">View Sponsorship Tiers</a>
+						<a class="btn btn-secondary" href="/contact">Contact Us</a>
+					</div>
+				</div>
+				<img
+					class="sponsor-hero-art"
+					src="/artwork/person-holding-wrench-619.png"
+					alt=""
+					aria-hidden="true"
+					loading="eager"
+					onerror="this.style.display='none'"
+				/>
+			</section>
+
+			<!-- ── Current sponsors ───────────────────────────────────────────── -->
+			<SponsorsGrid />
+
+			<!-- ── Impact stats ───────────────────────────────────────────────── -->
+			<section class="section" id="impact">
+				<h2 class="section-heading">The Impact of Your Support</h2>
+				<div class="impact-grid">
+					<div class="glass-card impact-stat">
+						<span class="stat-number">250+</span>
+						<span class="stat-label">Students on Team 619 over the years</span>
+					</div>
+					<div class="glass-card impact-stat">
+						<span class="stat-number">81%</span>
+						<span class="stat-label">FIRST alumni who declare a STEM major</span>
+					</div>
+					<div class="glass-card impact-stat">
+						<span class="stat-number">3×</span>
+						<span class="stat-label">More likely female FIRST alumni pursue STEM</span>
+					</div>
+					<div class="glass-card impact-stat">
+						<span class="stat-number">2001</span>
+						<span class="stat-label">Year Cavalier Robotics was founded</span>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── Sponsorship promise ─────────────────────────────────────────── -->
+			<section class="section" id="promise">
+				<h2 class="section-heading">Our Sponsorship Promise</h2>
+				<div class="promise-layout">
+					<div class="glass-card promise-copy">
+						<p>
+							Our sponsorship opportunities are reserved for companies who exemplify our team's
+							values and will help further the mission of Cavalier Robotics. In sponsoring our
+							team, your company becomes a part of our shared dream for the next generation of
+							engineers and STEM enthusiasts.
+						</p>
+						<p>
+							Your donation helps us maintain our workspace, purchase parts for our robots, and
+							cover competition costs — but the impact of your support goes so much farther.
+						</p>
+						<p>
+							Cavalier Robotics operates under <strong>Charlottesville Albemarle Robotics</strong>,
+							a registered 501(c)(3) non-profit. <strong>All contributions are tax-deductible.</strong>
+						</p>
+					</div>
+					<ul class="glass-card promise-list">
+						<li>
+							<span class="promise-icon">🤝</span>
+							<div>
+								<strong>Community Impact</strong>
+								<p>Directly invest in Central Virginia's next generation of engineers and STEM leaders.</p>
+							</div>
+						</li>
+						<li>
+							<span class="promise-icon">📣</span>
+							<div>
+								<strong>Consumer &amp; Media Exposure</strong>
+								<p>Your brand reaches students, families, educators, and competition audiences locally and nationally.</p>
+							</div>
+						</li>
+						<li>
+							<span class="promise-icon">🌱</span>
+							<div>
+								<strong>Positive Community Relationships</strong>
+								<p>Align your company with education, innovation, and gracious professionalism in your own backyard.</p>
+							</div>
+						</li>
+						<li>
+							<span class="promise-icon">🧾</span>
+							<div>
+								<strong>Tax Deduction</strong>
+								<p>As a 501(c)(3) organisation, your contribution is fully tax-deductible.</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- ── Sponsorship tiers ──────────────────────────────────────────── -->
+			<section class="section" id="tiers">
+				<h2 class="section-heading">Sponsorship Tiers</h2>
+				<p class="tiers-sub">All tiers include a signed thank-you letter. Benefits are cumulative — each tier includes everything below it.</p>
+
+				<div class="tiers-grid">
+
+					<!-- Advocate -->
+					<article class="glass-card tier-card tier-advocate">
+						<div class="tier-header">
+							<span class="tier-badge">Advocate</span>
+							<span class="tier-amount">$25+</span>
+						</div>
+						<ul class="tier-benefits">
+							<li>Signed team thank-you letter</li>
+						</ul>
+					</article>
+
+					<!-- Bronze -->
+					<article class="glass-card tier-card tier-bronze">
+						<div class="tier-header">
+							<span class="tier-badge">Bronze</span>
+							<span class="tier-amount">$250+</span>
+						</div>
+						<ul class="tier-benefits">
+							<li>Everything in Advocate</li>
+							<li>Company logo on team banner</li>
+						</ul>
+					</article>
+
+					<!-- Silver -->
+					<article class="glass-card tier-card tier-silver">
+						<div class="tier-header">
+							<span class="tier-badge">Silver</span>
+							<span class="tier-amount">$750+</span>
+						</div>
+						<ul class="tier-benefits">
+							<li>Everything in Bronze</li>
+							<li>Company logo on team t-shirts</li>
+							<li>Social media &amp; website feature</li>
+						</ul>
+					</article>
+
+					<!-- Gold -->
+					<article class="glass-card tier-card tier-gold">
+						<div class="tier-header">
+							<span class="tier-badge">Gold</span>
+							<span class="tier-amount">$1,500+</span>
+						</div>
+						<ul class="tier-benefits">
+							<li>Everything in Silver</li>
+							<li>Company logo on the competition robot</li>
+							<li>Team gift after competition season</li>
+						</ul>
+					</article>
+
+					<!-- Platinum -->
+					<article class="glass-card tier-card tier-platinum">
+						<div class="tier-header">
+							<span class="tier-badge">Platinum</span>
+							<span class="tier-amount">$3,000+</span>
+						</div>
+						<div class="tier-featured-label">Most Impactful</div>
+						<ul class="tier-benefits">
+							<li>Everything in Gold</li>
+							<li>Unique team memorabilia</li>
+							<li>Special team event invitations</li>
+							<li>Robot appearance at your company event</li>
+						</ul>
+					</article>
+
+				</div>
+			</section>
+
+			<!-- ── FIRST pillars ───────────────────────────────────────────────── -->
+			<section class="section" id="first-values">
+				<h2 class="section-heading">What FIRST Stands For</h2>
+				<div class="pillars-grid">
+					<div class="glass-card pillar-card">
+						<span class="pillar-icon">💡</span>
+						<h3>Innovation</h3>
+						<p>Each year our students devise creative solutions to new challenges — prototyping, testing, and redesigning until the robot works.</p>
+					</div>
+					<div class="glass-card pillar-card">
+						<span class="pillar-icon">🤲</span>
+						<h3>Teamwork</h3>
+						<p>Students from different schools and backgrounds come together, sharing ideas and learning from each other toward a common goal.</p>
+					</div>
+					<div class="glass-card pillar-card">
+						<span class="pillar-icon">🌍</span>
+						<h3>Community Impact</h3>
+						<p>We reach out to the younger generation through local events, demos, and outreach — growing STEM interest across Central Virginia.</p>
+					</div>
+					<div class="glass-card pillar-card">
+						<span class="pillar-icon">🏆</span>
+						<h3>Gracious Professionalism®</h3>
+						<p>Hard-fought competition always goes hand-in-hand with kindness and respect — on and off the playing field.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- ── How to sponsor ──────────────────────────────────────────────── -->
+			<section class="section" id="how-to-sponsor">
+				<h2 class="section-heading">Become a Sponsor</h2>
+				<div class="how-layout glass-card">
+					<div class="how-copy">
+						<p>
+							Ready to invest in Central Virginia's next generation of engineers? Reach out by
+							email or mail a check — we'll send you a sponsorship form and get your logo placed
+							before the competition season begins.
+						</p>
+						<div class="btn-row" style="margin-top: 1.2rem;">
+							<a class="btn btn-primary" href="/contact">Get in Touch</a>
+						</div>
+					</div>
+					<dl class="how-details">
+						<div>
+							<dt>Email</dt>
+							<dd><a href="mailto:info@carobotics.org">info@carobotics.org</a></dd>
+						</div>
+						<div>
+							<dt>Make checks payable to</dt>
+							<dd>C.A Robotics</dd>
+						</div>
+						<div>
+							<dt>Mail to</dt>
+							<dd>P.O. Box 6434<br />Charlottesville, VA 22906</dd>
+						</div>
+						<div>
+							<dt>Competition deadline</dt>
+							<dd>Sponsorships accepted on a rolling basis</dd>
+						</div>
+					</dl>
+				</div>
+			</section>
+
+		</main>
+
+		<footer class="site-footer">
+			<p>© {new Date().getFullYear()} Cavalier Robotics FRC Team 619 · Charlottesville, VA · <a href="mailto:info@carobotics.org">info@carobotics.org</a></p>
+		</footer>
+	</div>
+</Layout>
+
+<style>
+	.site-footer {
+		text-align: center;
+		padding: 2rem 0 1.5rem;
+		color: var(--ink-faint);
+		font-size: 0.78rem;
+	}
+
+	.site-footer a {
+		color: var(--ink-faint);
+		text-decoration: none;
+	}
+
+	.site-footer a:hover { text-decoration: underline; }
+
+	/* ── Hero ──────────────────────────────────────────────────────────── */
+	.sponsor-hero {
+		margin-top: 1.2rem;
+		padding: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 2rem;
+		align-items: center;
+		overflow: hidden;
+		border-top: 3px solid var(--orange);
+	}
+
+	.sponsor-hero h1 {
+		font-size: clamp(2rem, 1.4rem + 2.5vw, 3.2rem);
+		color: var(--blue);
+		margin-bottom: 0.9rem;
+	}
+
+	.lead {
+		color: var(--ink-muted);
+		font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem);
+		line-height: 1.65;
+		margin-bottom: 1.4rem;
+	}
+
+	.sponsor-hero-art {
+		height: clamp(10rem, 8rem + 6vw, 17rem);
+		width: auto;
+		display: block;
+		filter: drop-shadow(0 6px 18px rgba(18, 24, 39, 0.12));
+	}
+
+	/* ── Impact stats ──────────────────────────────────────────────────── */
+	.impact-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0.75rem;
+	}
+
+	.impact-stat {
+		padding: 1.2rem 1rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.4rem;
+		border-top: 3px solid var(--orange);
+		text-align: center;
+	}
+
+	.stat-number {
+		font-family: 'Saira Semi Condensed', sans-serif;
+		font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.4rem);
+		font-weight: 800;
+		color: var(--blue);
+		line-height: 1;
+		letter-spacing: 0.03em;
+	}
+
+	.stat-label {
+		font-size: 0.72rem;
+		font-weight: 600;
+		color: var(--ink-faint);
+		line-height: 1.35;
+		text-align: center;
+	}
+
+	/* ── Promise ───────────────────────────────────────────────────────── */
+	.promise-layout {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+		align-items: start;
+	}
+
+	.promise-copy {
+		padding: 1.5rem;
+		border-left: 3px solid var(--blue-mid);
+		display: grid;
+		gap: 0.8rem;
+	}
+
+	.promise-copy p {
+		color: var(--ink-muted);
+		line-height: 1.7;
+		font-size: 0.9rem;
+	}
+
+	.promise-list {
+		padding: 1.5rem;
+		margin: 0;
+		list-style: none;
+		display: grid;
+		gap: 1.1rem;
+		border-top: 3px solid var(--blue-mid);
+	}
+
+	.promise-list li {
+		display: flex;
+		gap: 0.9rem;
+		align-items: flex-start;
+	}
+
+	.promise-icon {
+		font-size: 1.3rem;
+		flex-shrink: 0;
+		line-height: 1.2;
+	}
+
+	.promise-list strong {
+		display: block;
+		font-size: 0.875rem;
+		color: var(--blue);
+		margin-bottom: 0.2rem;
+	}
+
+	.promise-list p {
+		margin: 0;
+		font-size: 0.83rem;
+		color: var(--ink-muted);
+		line-height: 1.55;
+	}
+
+	/* ── Tiers ─────────────────────────────────────────────────────────── */
+	.tiers-sub {
+		color: var(--ink-muted);
+		font-size: 0.875rem;
+		margin-bottom: 1.2rem;
+	}
+
+	.tiers-grid {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 0.75rem;
+		align-items: start;
+	}
+
+	.tier-card {
+		padding: 1.2rem 1rem;
+		position: relative;
+	}
+
+	.tier-header {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+		margin-bottom: 1rem;
+	}
+
+	.tier-badge {
+		font-family: 'Saira Semi Condensed', sans-serif;
+		font-size: 1rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	.tier-amount {
+		font-size: 1.5rem;
+		font-family: 'Saira Semi Condensed', sans-serif;
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	.tier-benefits {
+		margin: 0;
+		padding: 0 0 0 1.1rem;
+		display: grid;
+		gap: 0.4rem;
+	}
+
+	.tier-benefits li {
+		font-size: 0.8rem;
+		color: var(--ink-muted);
+		line-height: 1.45;
+	}
+
+	.tier-featured-label {
+		position: absolute;
+		top: -0.6rem;
+		right: 0.8rem;
+		background: var(--blue);
+		color: #fff;
+		font-size: 0.62rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		padding: 0.18rem 0.55rem;
+		border-radius: 0.2rem;
+	}
+
+	/* Tier accent colours */
+	.tier-advocate { border-top: 3px solid var(--ink-faint); }
+	.tier-advocate .tier-badge { color: var(--ink-muted); }
+	.tier-advocate .tier-amount { color: var(--ink-muted); }
+
+	.tier-bronze { border-top: 3px solid #b87333; }
+	.tier-bronze .tier-badge { color: #8a5520; }
+	.tier-bronze .tier-amount { color: #b87333; }
+
+	.tier-silver { border-top: 3px solid #7a8899; }
+	.tier-silver .tier-badge { color: #5a6570; }
+	.tier-silver .tier-amount { color: #7a8899; }
+
+	.tier-gold { border-top: 3px solid var(--orange); }
+	.tier-gold .tier-badge { color: var(--orange-dark); }
+	.tier-gold .tier-amount { color: var(--orange); }
+
+	.tier-platinum { border-top: 3px solid var(--blue); }
+	.tier-platinum .tier-badge { color: var(--blue); }
+	.tier-platinum .tier-amount { color: var(--blue); }
+
+	/* ── FIRST pillars ─────────────────────────────────────────────────── */
+	.pillars-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0.75rem;
+	}
+
+	.pillar-card {
+		padding: 1.3rem 1.1rem;
+		border-top: 3px solid var(--blue-mid);
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.pillar-icon {
+		font-size: 1.6rem;
+		line-height: 1;
+	}
+
+	.pillar-card h3 {
+		font-size: 0.9rem;
+		color: var(--blue);
+	}
+
+	.pillar-card p {
+		font-size: 0.82rem;
+		color: var(--ink-muted);
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	/* ── How to sponsor ────────────────────────────────────────────────── */
+	.how-layout {
+		padding: clamp(1.4rem, 1rem + 2vw, 2.2rem);
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 2.5rem;
+		align-items: start;
+		border-top: 3px solid var(--orange);
+	}
+
+	.how-copy p {
+		color: var(--ink-muted);
+		line-height: 1.7;
+	}
+
+	.how-details {
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 0.9rem;
+		min-width: 220px;
+	}
+
+	.how-details dt {
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--ink-faint);
+		font-size: 0.65rem;
+		font-weight: 700;
+	}
+
+	.how-details dd {
+		margin: 0.25rem 0 0;
+		font-weight: 600;
+		font-size: 0.875rem;
+		color: var(--ink);
+		line-height: 1.4;
+	}
+
+	.how-details a {
+		color: var(--blue-mid);
+		text-decoration: none;
+	}
+
+	.how-details a:hover { text-decoration: underline; }
+
+	/* ── Responsive ────────────────────────────────────────────────────── */
+	@media (max-width: 1100px) {
+		.tiers-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	@media (max-width: 900px) {
+		.sponsor-hero {
+			grid-template-columns: 1fr;
+		}
+
+		.sponsor-hero-art {
+			display: none;
+		}
+
+		.impact-grid,
+		.pillars-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.promise-layout {
+			grid-template-columns: 1fr;
+		}
+
+		.how-layout {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.tiers-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.impact-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 420px) {
+		.tiers-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

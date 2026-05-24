@@ -1,0 +1,43 @@
+---
+import { getEntry } from 'astro:content';
+
+const page = await getEntry('pages', 'home');
+if (!page) throw new Error('Missing home page content');
+const home = page.data;
+---
+
+<section class="section" id="sponsors">
+	<h2 class="section-heading">Special Thanks to Our 2025-2026 Sponsors</h2>
+	<div class="sponsors-grid glass-card">
+		{home.sponsors.map((sponsor) => (
+			<div class="sponsor-item">
+				<img src={sponsor.src} alt={sponsor.alt} loading="lazy" />
+			</div>
+		))}
+	</div>
+</section>
+
+<style>
+	.sponsors-grid {
+		display: grid;
+		gap: 0;
+		grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+		padding: 0;
+		border-top: 3px solid var(--orange);
+		overflow: hidden;
+	}
+
+	.sponsor-item {
+		background: var(--surface);
+		display: grid;
+		place-items: center;
+		padding: 0.9rem 0.7rem;
+		min-height: 88px;
+	}
+
+	.sponsor-item img {
+		max-width: 100%;
+		max-height: 68px;
+		object-fit: contain;
+	}
+</style>

@@ -1,0 +1,154 @@
+---
+import { getEntry } from 'astro:content';
+
+const page = await getEntry('pages', 'home');
+if (!page) throw new Error('Missing home page content in src/content/pages/home.md');
+const home = page.data;
+
+const socialIcons: Record<string, string> = {
+	facebook: `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>`,
+	youtube:  `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.47a2.78 2.78 0 0 0-1.95 1.95C1 8.12 1 12 1 12s0 3.88.46 5.58a2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95C23 15.88 23 12 23 12s0-3.88-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>`,
+	instagram:`<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`,
+};
+const getIcon = (label: string) => socialIcons[label.toLowerCase()] ?? '';
+---
+
+<section class="section" id="contact">
+	<div class="contact-cta glass-card">
+		<div class="contact-cta-copy">
+			<h2 class="section-heading" style="margin:0 0 0.5rem;">Get In Touch</h2>
+			<p>Questions? Want to join the team or sponsor us? We'd love to hear from you.</p>
+			<div class="btn-row" style="margin-top:1rem;">
+				<a class="btn btn-primary" href="/contact">Contact Us</a>
+			</div>
+		</div>
+		<dl class="contact-list">
+			<div>
+				<dt>Phone</dt>
+				<dd><a href={`tel:${home.contact.phone.replace(/[^\d+]/g, '')}`}>{home.contact.phone}</a></dd>
+			</div>
+			<div>
+				<dt>Mailing</dt>
+				<dd>{home.contact.mailingAddress}</dd>
+			</div>
+			<div>
+				<dt>Workshop</dt>
+				<dd>{home.contact.workshopAddress}</dd>
+			</div>
+		</dl>
+
+		<div class="social-row">
+			{home.social.map((item) => (
+				<a href={item.href} target="_blank" rel="noreferrer">
+					<span set:html={getIcon(item.label)} />
+					{item.label}
+				</a>
+			))}
+		</div>
+		<img
+			class="contact-mascot"
+			src="/artwork/duck-swimming-cavalier-robotics.png"
+			alt=""
+			aria-hidden="true"
+			loading="lazy"
+		/>
+	</div>
+</section>
+
+<style>
+	.contact-cta {
+		padding: 1.5rem clamp(1.4rem, 1rem + 2vw, 2.4rem);
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1.5rem;
+		border-top: 3px solid var(--blue-mid);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.contact-cta-copy {
+		flex: 1 1 260px;
+	}
+
+	.contact-cta-copy p {
+		color: var(--ink-muted);
+		font-size: 0.9rem;
+		line-height: 1.6;
+	}
+
+	.contact-list {
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 0.7rem;
+		flex: 0 0 auto;
+	}
+
+	.contact-list dt {
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--ink-faint);
+		font-size: 0.68rem;
+		font-weight: 700;
+	}
+
+	.contact-list dd {
+		margin: 0.2rem 0 0;
+		font-weight: 600;
+		font-size: 0.85rem;
+		color: var(--ink);
+		line-height: 1.4;
+	}
+
+	.contact-list a {
+		color: var(--ink);
+		text-decoration: none;
+	}
+
+	.contact-list a:hover { text-decoration: underline; }
+
+	.contact-mascot {
+		position: absolute;
+		right: -2rem;
+		bottom: -2rem;
+		height: clamp(8rem, 6rem + 4vw, 13rem);
+		width: auto;
+		pointer-events: none;
+		opacity: 0.18;
+	}
+
+	.social-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.social-row a > span {
+		transform: translateY(0px);
+		flex-shrink: 0;
+		display: flex;
+	}
+
+	.social-row a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		text-decoration: none;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.07em;
+		text-transform: uppercase;
+		color: var(--blue);
+		border: 1px solid var(--border);
+		border-radius: 0.25rem;
+		padding: 0.35rem 0.75rem;
+		background: var(--surface);
+		transition: background-color 150ms ease, border-color 150ms ease;
+	}
+
+	.social-row a:hover {
+		background: rgba(35, 45, 75, 0.06);
+		border-color: rgba(35, 45, 75, 0.25);
+	}
+</style>
