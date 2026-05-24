@@ -1,0 +1,79 @@
+backend:
+  name: github
+  repo: your-org-or-user/your-repo-name
+  branch: main
+
+local_backend: true
+
+media_folder: public/uploads
+public_folder: /uploads
+
+site_url: https://carobotics.org
+logo_url: https://www.carobotics.org/wp-content/uploads/2026/05/Screenshot-2026-05-05-214227.png
+
+collections:
+  - name: pages
+    label: Site Content
+    files:
+      - file: src/content/pages/home.md
+        label: Homepage
+        name: home
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: Team Number, name: teamNumber, widget: string }
+          - { label: City, name: city, widget: string }
+          - { label: Mission, name: mission, widget: text }
+          - { label: CTA Label, name: ctaLabel, widget: string }
+          - { label: CTA Link, name: ctaHref, widget: string }
+          - { label: Secondary CTA Label, name: secondaryCtaLabel, widget: string }
+          - { label: Secondary CTA Link, name: secondaryCtaHref, widget: string }
+          - { label: Hero Image URL, name: heroImage, widget: string }
+          - label: Gallery Images
+            name: galleryImages
+            widget: list
+            fields:
+              - { label: Image URL, name: src, widget: string }
+              - { label: Alt Text, name: alt, widget: string }
+          - label: Engineering Skills
+            name: engineeringSkills
+            widget: list
+            field: { label: Skill, name: skill, widget: string }
+          - label: Leadership Skills
+            name: leadershipSkills
+            widget: list
+            field: { label: Skill, name: skill, widget: string }
+          - label: Sponsors
+            name: sponsors
+            widget: list
+            fields:
+              - { label: Logo URL, name: src, widget: string }
+              - { label: Name/Alt, name: alt, widget: string }
+          - label: Contact
+            name: contact
+            widget: object
+            fields:
+              - { label: Email, name: email, widget: string }
+              - { label: Phone, name: phone, widget: string }
+              - { label: Mailing Address, name: mailingAddress, widget: string }
+              - { label: Workshop Address, name: workshopAddress, widget: string }
+          - label: Social Links
+            name: social
+            widget: list
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: URL, name: href, widget: string }
+          - { label: Intro Body, name: body, widget: markdown }
+
+  - name: news
+    label: News
+    folder: src/content/news
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Excerpt, name: excerpt, widget: text }
+      - { label: Publish Date, name: publishDate, widget: datetime, date_format: YYYY-MM-DD, time_format: false }
+      - { label: Feature Image URL, name: image, widget: string, required: false }
+      - { label: Feature Image Alt, name: imageAlt, widget: string, required: false }
+      - { label: Article Body, name: body, widget: markdown }

@@ -1,46 +1,68 @@
-# Astro Starter Kit: Basics
+# Cavalier Robotics Website (Astro + Markdown/MDX + Decap)
+
+This project is a redesigned Team 619 website built for maintainability and low hosting cost.
+
+## Stack
+
+- Astro for site generation
+- Markdown and MDX content collections
+- Decap CMS for non-technical content editing
+- Cloudflare Pages ready
+
+## Local Development
+
+From the project root:
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Site runs at `http://localhost:4321`.
 
-## 🚀 Project Structure
+## Local Decap CMS Testing
 
-Inside of your Astro project, you'll see the following folders and files:
+Decap admin route:
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+http://localhost:4321/admin/
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+For local CMS backend proxy (recommended while testing Decap):
 
-## 🧞 Commands
+```sh
+npm run cms:proxy
+```
 
-All commands are run from the root of the project, from a terminal:
+Run this in a separate terminal while `npm run dev` is active.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Content Editing
 
-## 👀 Want to learn more?
+- Homepage content: `src/content/pages/home.md`
+- News posts: `src/content/news/*.md` and `src/content/news/*.mdx`
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Build and Preview
+
+```sh
+npm run build
+npm run preview
+```
+
+## Cloudflare Pages Deployment
+
+Use these settings in Cloudflare Pages:
+
+- Framework preset: `Astro`
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Node version: `24`
+
+## Decap GitHub Backend Setup
+
+Before production CMS usage, update:
+
+- `public/admin/config.yml`
+	- `backend.repo` to your real GitHub repo (`owner/repo`)
+	- `backend.branch` to your default branch
+
+After that, `/admin` will create and commit content updates directly to Git.
