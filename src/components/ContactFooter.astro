@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import duckSwimming from '../assets/artwork/duck-swimming-cavalier-robotics.png';
 import { getEntry } from 'astro:content';
 
 const page = await getEntry('pages', 'home');
@@ -45,9 +47,9 @@ const getIcon = (label: string) => socialIcons[label.toLowerCase()] ?? '';
 				</a>
 			))}
 		</div>
-		<img
+		<Image
 			class="contact-mascot"
-			src="/artwork/duck-swimming-cavalier-robotics.png"
+			src={duckSwimming}
 			alt=""
 			aria-hidden="true"
 			loading="lazy"

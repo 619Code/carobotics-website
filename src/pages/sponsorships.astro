@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import heroArt from '../assets/artwork/person-holding-wrench-619.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import SponsorsGrid from '../components/SponsorsGrid.astro';
@@ -28,13 +30,12 @@ import SponsorsGrid from '../components/SponsorsGrid.astro';
 						<a class="btn btn-secondary" href="/contact">Contact Us</a>
 					</div>
 				</div>
-				<img
+				<Image
 					class="sponsor-hero-art"
-					src="/artwork/person-holding-wrench-619.png"
+					src={heroArt}
 					alt=""
 					aria-hidden="true"
 					loading="eager"
-					onerror="this.style.display='none'"
 				/>
 			</section>
 
@@ -231,6 +232,10 @@ import SponsorsGrid from '../components/SponsorsGrid.astro';
 						<div class="btn-row" style="margin-top: 1.2rem;">
 							<a class="btn btn-primary" href="/contact">Get in Touch</a>
 						</div>
+						<p class="individual-note">
+							Not representing a company? Individual donations of any amount are just as meaningful —
+							<a href="/donations">donate personally here</a>.
+						</p>
 					</div>
 					<dl class="how-details">
 						<div>
@@ -533,6 +538,21 @@ import SponsorsGrid from '../components/SponsorsGrid.astro';
 		color: var(--ink-muted);
 		line-height: 1.7;
 	}
+
+	.individual-note {
+		margin-top: 1rem;
+		font-size: 0.85rem;
+		color: var(--ink-faint);
+		line-height: 1.55;
+	}
+
+	.individual-note a {
+		color: var(--blue-mid);
+		text-decoration: none;
+		font-weight: 600;
+	}
+
+	.individual-note a:hover { text-decoration: underline; }
 
 	.how-details {
 		margin: 0;

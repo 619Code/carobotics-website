@@ -1,4 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+import heroArt from '../assets/artwork/person-riding-robot-on-water.png';
+import duckWithWrench from '../assets/artwork/duck-with-wrench.png';
+import boyWithGlass from '../assets/artwork/boy-with-magnified-glass-2026-comp-year.png';
+import duckWithScrewdriver from '../assets/artwork/duck-with-screwdriver.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import ContactFooter from '../components/ContactFooter.astro';
@@ -24,9 +29,9 @@ import ContactFooter from '../components/ContactFooter.astro';
 						<a class="btn btn-secondary" href="/#sponsors">Our Sponsors</a>
 					</div>
 				</div>
-				<img
+				<Image
 					class="about-hero-art"
-					src="/artwork/person-riding-robot-on-water.png"
+					src={heroArt}
 					alt=""
 					aria-hidden="true"
 					loading="eager"
@@ -107,7 +112,7 @@ import ContactFooter from '../components/ContactFooter.astro';
 				<h2 class="section-heading">Benefits of Joining</h2>
 				<div class="benefits-grid">
 					<article class="glass-card benefit-card">
-						<img class="benefit-art" src="/artwork/duck-with-wrench.png" alt="" aria-hidden="true" loading="lazy" />
+						<Image class="benefit-art" src={duckWithWrench} alt="" aria-hidden="true" loading="lazy" />
 						<h3>Hands-On STEM Experience</h3>
 						<p>
 							Work alongside mentors with real-world engineering experience. Design parts in CAD,
@@ -116,7 +121,7 @@ import ContactFooter from '../components/ContactFooter.astro';
 						</p>
 					</article>
 					<article class="glass-card benefit-card">
-						<img class="benefit-art" src="/artwork/boy-with-magnified-glass-2026-comp-year.png" alt="" aria-hidden="true" loading="lazy" />
+						<Image class="benefit-art" src={boyWithGlass} alt="" aria-hidden="true" loading="lazy" />
 						<h3>Great STEM Community</h3>
 						<p>
 							Join a team of curious, driven students and dedicated adult mentors. Build lasting
@@ -125,7 +130,7 @@ import ContactFooter from '../components/ContactFooter.astro';
 						</p>
 					</article>
 					<article class="glass-card benefit-card">
-						<img class="benefit-art" src="/artwork/duck-with-screwdriver.png" alt="" aria-hidden="true" loading="lazy" />
+						<Image class="benefit-art" src={duckWithScrewdriver} alt="" aria-hidden="true" loading="lazy" />
 						<h3>College &amp; Career Ready</h3>
 						<p>
 							FIRST alumni stand out in college applications and engineering internships. Leadership

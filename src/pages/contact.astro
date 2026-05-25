@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import duckWithWrench from '../assets/artwork/duck-with-wrench.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import { getEntry } from 'astro:content';
@@ -33,9 +35,9 @@ const getIcon = (label: string) => socialIcons[label.toLowerCase()] ?? '';
 						we'd love to hear from you. Send a message below or reach us directly.
 					</p>
 				</div>
-				<img
+				<Image
 					class="contact-hero-art"
-					src="/artwork/duck-with-wrench.png"
+					src={duckWithWrench}
 					alt=""
 					aria-hidden="true"
 					loading="eager"

@@ -1,4 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+import mascotFloat from '../assets/artwork/person-riding-619-robot.png';
+import duckWithWrench from '../assets/artwork/duck-with-wrench.png';
+import duckWithScrewdriver from '../assets/artwork/duck-with-screwdriver.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import ContactFooter from '../components/ContactFooter.astro';
@@ -43,9 +47,9 @@ const home = page.data;
 			</section>
 
 			<!-- Mascot floats between hero and skills, overlapping both -->
-			<img
+			<Image
 				class="mascot-float"
-				src="/artwork/person-riding-619-robot.png"
+				src={mascotFloat}
 				alt=""
 				aria-hidden="true"
 				loading="eager"
@@ -55,14 +59,14 @@ const home = page.data;
 				<h2 class="section-heading">Through Our Team You Will Learn</h2>
 				<div class="skills-grid">
 					<article class="glass-card skill-card">
-						<img class="skill-art" src="/artwork/duck-with-wrench.png" alt="" aria-hidden="true" loading="lazy" />
+						<Image class="skill-art" src={duckWithWrench} alt="" aria-hidden="true" loading="lazy" />
 						<h3>Engineering and Build</h3>
 						<ul>
 							{home.engineeringSkills.map((skill) => <li>{skill}</li>)}
 						</ul>
 					</article>
 					<article class="glass-card skill-card">
-						<img class="skill-art" src="/artwork/duck-with-screwdriver.png" alt="" aria-hidden="true" loading="lazy" />
+						<Image class="skill-art" src={duckWithScrewdriver} alt="" aria-hidden="true" loading="lazy" />
 						<h3>Leadership and Strategy</h3>
 						<ul>
 							{home.leadershipSkills.map((skill) => <li>{skill}</li>)}

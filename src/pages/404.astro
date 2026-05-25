@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets';
+import duckWithWrench from '../assets/artwork/duck-with-wrench.png';
+import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+---
+
+<Layout
+	title="Page Not Found | Cavalier Robotics Team 619"
+	description="The page you're looking for doesn't exist."
+>
+	<div class="page-wrap">
+		<TopNav />
+
+		<main>
+			<section class="not-found glass-card section reveal-delay">
+				<Image
+					class="not-found-art"
+					src={duckWithWrench}
+					alt=""
+					aria-hidden="true"
+					loading="eager"
+				/>
+				<div class="not-found-copy">
+					<span class="chip">404 — Page Not Found</span>
+					<h1>Nothing to see here.</h1>
+					<p class="lead">
+						Looks like this page took a wrong turn at the pit. Let's get you back on the field.
+					</p>
+					<div class="btn-row">
+						<a class="btn btn-primary" href="/">Back to Home</a>
+						<a class="btn btn-secondary" href="/contact">Contact Us</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<p>© {new Date().getFullYear()} Cavalier Robotics FRC Team 619 · Charlottesville, VA</p>
+		</footer>
+	</div>
+</Layout>
+
+<style>
+	.not-found {
+		margin-top: 1.2rem;
+		padding: clamp(2rem, 1.5rem + 3vw, 4rem) clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2.5rem;
+		align-items: center;
+		border-top: 3px solid var(--orange);
+	}
+
+	.not-found-art {
+		height: clamp(8rem, 6rem + 6vw, 14rem);
+		width: auto;
+		filter: drop-shadow(0 6px 18px rgba(18, 24, 39, 0.12));
+		flex-shrink: 0;
+	}
+
+	.not-found-copy {
+		flex: 1 1 280px;
+	}
+
+	.not-found-copy h1 {
+		font-size: clamp(2rem, 1.4rem + 2.5vw, 3rem);
+		color: var(--blue);
+		margin-bottom: 0.9rem;
+	}
+
+	.lead {
+		color: var(--ink-muted);
+		font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem);
+		line-height: 1.65;
+		margin-bottom: 1.4rem;
+	}
+
+	.site-footer {
+		text-align: center;
+		padding: 2rem 0 1.5rem;
+		color: var(--ink-faint);
+		font-size: 0.78rem;
+	}
+</style>

@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import heroArt from '../assets/artwork/person-riding-619-robot.png';
+import duckSwimming from '../assets/artwork/duck-swimming-cavalier-robotics.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import ContactFooter from '../components/ContactFooter.astro';
@@ -27,9 +30,9 @@ import ContactFooter from '../components/ContactFooter.astro';
 						<a class="btn btn-secondary" href="/about">About the Team</a>
 					</div>
 				</div>
-				<img
+				<Image
 					class="donate-hero-art"
-					src="/artwork/person-riding-619-robot.png"
+					src={heroArt}
 					alt=""
 					aria-hidden="true"
 					loading="eager"
@@ -123,9 +126,9 @@ import ContactFooter from '../components/ContactFooter.astro';
 			<!-- ── Thank you ──────────────────────────────────────────────────── -->
 			<section class="section">
 				<div class="thankyou-panel glass-card">
-					<img
+					<Image
 						class="thankyou-art"
-						src="/artwork/duck-swimming-cavalier-robotics.png"
+						src={duckSwimming}
 						alt=""
 						aria-hidden="true"
 						loading="lazy"
