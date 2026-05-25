@@ -1,0 +1,162 @@
+---
+import { Image } from 'astro:assets';
+import calendarArt from '../assets/artwork/duck-riding-robot-2026-comp-year.png';
+import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+---
+
+<Layout
+	title="Calendar | Cavalier Robotics Team 619"
+	description="View upcoming meetings, competition dates, and team events for Cavalier Robotics FRC Team 619."
+>
+	<div class="page-wrap">
+		<TopNav />
+
+		<main>
+			<!-- ── Hero ──────────────────────────────────────────────────────── -->
+			<section class="calendar-hero glass-card section reveal-delay">
+				<div class="calendar-hero-copy">
+					<span class="chip">Team Schedule</span>
+					<h1>Calendar</h1>
+					<p class="lead">
+						Stay up to date with team meetings, build season milestones, competition dates, and
+						community events.
+					</p>
+				</div>
+				<Image
+					class="calendar-hero-art"
+					src={calendarArt}
+					alt=""
+					aria-hidden="true"
+					loading="eager"
+				/>
+			</section>
+
+			<!-- ── Calendar embed ────────────────────────────────────────────── -->
+			<section class="section">
+				<div class="calendar-wrap glass-card">
+					<iframe
+						title="Cavalier Robotics Team Calendar"
+						src="https://calendar.google.com/calendar/embed?height=700&wkst=1&bgcolor=%23eef2f7&ctz=America%2FNew_York&src=Y2Fyb2JvdGljc0BnbWFpbC5jb20&src=ZG5kajhyYTgyMmQwbDBycnMzNW1taXEwZDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YnFwOWc0Z3YxZHNhZjlvcWdsa21hdHVncG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23A79B8E&color=%23F09300&color=%23009688&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=1&mode=MONTH"
+						loading="lazy"
+						frameborder="0"
+						scrolling="no"
+					></iframe>
+				</div>
+			</section>
+
+			<!-- ── Subscribe ─────────────────────────────────────────────────── -->
+			<section class="section">
+				<div class="glass-card subscribe-panel">
+					<h2>Subscribe to Our Calendar</h2>
+					<p>
+						Add Team 619's calendar to your own app to get event reminders automatically. Works
+						with Google Calendar, Apple Calendar, Outlook, and any app that supports iCal.
+					</p>
+					<div class="btn-row">
+						<a
+							class="btn btn-primary"
+							href="https://calendar.google.com/calendar/u/0?cid=Y2Fyb2JvdGljc0BnbWFpbC5jb20"
+							target="_blank"
+							rel="noreferrer"
+						>
+							Add to Google Calendar
+						</a>
+						<a
+							class="btn btn-secondary"
+							href="webcal://calendar.google.com/calendar/ical/carobotics%40gmail.com/public/basic.ics"
+						>
+							Subscribe via iCal
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<p>© {new Date().getFullYear()} Cavalier Robotics FRC Team 619 · Charlottesville, VA</p>
+		</footer>
+	</div>
+</Layout>
+
+<style>
+	/* ── Hero ──────────────────────────────────────────────────────────── */
+	.calendar-hero {
+		margin-top: 1.2rem;
+		padding: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 2rem;
+		align-items: center;
+		overflow: hidden;
+		border-top: 3px solid var(--orange);
+	}
+
+	.calendar-hero h1 {
+		font-size: clamp(2rem, 1.4rem + 2.5vw, 3.2rem);
+		color: var(--blue);
+		margin-bottom: 0.9rem;
+	}
+
+	.calendar-hero-art {
+		height: clamp(10rem, 8rem + 6vw, 17rem);
+		width: auto;
+		display: block;
+		filter: drop-shadow(0 6px 18px rgba(18, 24, 39, 0.12));
+	}
+
+	/* ── Calendar embed wrapper ─────────────────────────────────────────── */
+	.calendar-wrap {
+		padding: 1.25rem;
+		overflow: hidden;
+	}
+
+	.calendar-wrap iframe {
+		display: block;
+		width: 100%;
+		min-height: 680px;
+		border: none;
+		border-radius: 0.25rem;
+	}
+
+	/* ── Subscribe panel ────────────────────────────────────────────────── */
+	.subscribe-panel {
+		padding: clamp(1.5rem, 3vw, 2.25rem);
+	}
+
+	.subscribe-panel h2 {
+		font-family: 'Saira Semi Condensed', sans-serif;
+		font-size: 1.4rem;
+		color: var(--blue);
+		margin: 0 0 0.6rem;
+	}
+
+	.subscribe-panel p {
+		color: var(--ink-muted);
+		margin: 0 0 1.25rem;
+		max-width: 56ch;
+	}
+
+	/* ── Footer ─────────────────────────────────────────────────────────── */
+	.site-footer {
+		text-align: center;
+		padding: 2rem 0 1.5rem;
+		color: var(--ink-faint);
+		font-size: 0.78rem;
+	}
+
+	/* ── Responsive ─────────────────────────────────────────────────────── */
+	@media (max-width: 720px) {
+		.calendar-hero {
+			grid-template-columns: 1fr;
+		}
+
+		.calendar-hero-art {
+			display: none;
+		}
+
+		.calendar-wrap iframe {
+			min-height: 480px;
+		}
+	}
+</style>
