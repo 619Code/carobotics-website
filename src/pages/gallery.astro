@@ -1,0 +1,264 @@
+---
+import { Image } from 'astro:assets';
+import galleryArt from '../assets/artwork/duck-riding-robot-2026-comp-year.png';
+import Layout from '../layouts/Layout.astro';
+import TopNav from '../components/TopNav.astro';
+import ContactFooter from '../components/ContactFooter.astro';
+import { getCollection } from 'astro:content';
+
+const page = (await getCollection('pages')).find((entry) => entry.id === 'home');
+
+if (!page) {
+	throw new Error('Missing home page content in src/content/pages/home.md');
+}
+
+const images = page.data.galleryImages;
+---
+
+<Layout
+	title="Gallery | Cavalier Robotics Team 619"
+	description="Photos from Team 619's build seasons, competitions, and community events."
+>
+	<div class="page-wrap">
+		<TopNav />
+
+		<main>
+			<!-- ── Hero ──────────────────────────────────────────────────────── -->
+			<section class="gallery-hero glass-card section reveal-delay">
+				<div class="gallery-hero-copy">
+					<span class="chip">Team Photos</span>
+					<h1>Gallery</h1>
+					<p class="lead">
+						A look inside Team 619 — from the shop floor to the competition arena.
+					</p>
+				</div>
+				<Image
+					class="gallery-hero-art"
+					src={galleryArt}
+					alt=""
+					aria-hidden="true"
+					loading="eager"
+				/>
+			</section>
+
+			<!-- ── Photo grid ─────────────────────────────────────────────── -->
+			<section class="section">
+				<div class="photo-grid">
+					{images.map((image, i) => (
+						<figure
+							class="photo-item glass-card"
+							data-index={i}
+						>
+							<button
+								class="photo-btn"
+								aria-label={`View full size: ${image.alt}`}
+								data-src={image.src}
+								data-alt={image.alt}
+							>
+								<img src={image.src} alt={image.alt} loading="lazy" />
+							</button>
+						</figure>
+					))}
+				</div>
+			</section>
+
+			<ContactFooter />
+		</main>
+	</div>
+</Layout>
+
+<!-- ── Lightbox ───────────────────────────────────────────────────────── -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+	<button class="lightbox-close" id="lightbox-close" aria-label="Close photo viewer">✕</button>
+	<img class="lightbox-img" id="lightbox-img" src="" alt="" />
+</div>
+
+<script>
+	const lightbox   = document.getElementById('lightbox') as HTMLElement;
+	const lbImg      = document.getElementById('lightbox-img') as HTMLImageElement;
+	const lbClose    = document.getElementById('lightbox-close') as HTMLButtonElement;
+	const btns       = document.querySelectorAll<HTMLButtonElement>('.photo-btn');
+
+	function open(src: string, alt: string) {
+		lbImg.src = src;
+		lbImg.alt = alt;
+		lightbox.hidden = false;
+		document.body.style.overflow = 'hidden';
+		lbClose.focus();
+	}
+
+	function close() {
+		lightbox.hidden = true;
+		lbImg.src = '';
+		document.body.style.overflow = '';
+	}
+
+	btns.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			open(btn.dataset.src ?? '', btn.dataset.alt ?? '');
+		});
+	});
+
+	lbClose.addEventListener('click', close);
+
+	lightbox.addEventListener('click', (e) => {
+		if (e.target === lightbox) close();
+	});
+
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && !lightbox.hidden) close();
+	});
+</script>
+
+<style>
+	/* ── Hero ──────────────────────────────────────────────────────────── */
+	.gallery-hero {
+		margin-top: 1.2rem;
+		padding: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 2rem;
+		align-items: center;
+		border-top: 3px solid var(--orange);
+		overflow: hidden;
+	}
+
+	.gallery-hero-copy {
+		display: grid;
+		gap: 0.75rem;
+	}
+
+	.gallery-hero-copy h1 {
+		font-size: clamp(2rem, 1.4rem + 3vw, 3.4rem);
+		color: var(--blue);
+		line-height: 1;
+	}
+
+	.gallery-hero-art {
+		height: clamp(8rem, 6rem + 6vw, 14rem);
+		width: auto;
+		filter: drop-shadow(0 6px 18px rgba(18, 24, 39, 0.14));
+	}
+
+	/* ── Photo grid ────────────────────────────────────────────────────── */
+	.photo-grid {
+		display: grid;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+		gap: 0.6rem;
+	}
+
+	.photo-item {
+		margin: 0;
+		overflow: hidden;
+		border-radius: 0.4rem;
+		border: 1px solid var(--border);
+	}
+
+	/* Alternating wide/narrow layout mirroring the homepage gallery */
+	.photo-item:nth-child(6n + 1),
+	.photo-item:nth-child(6n + 4) {
+		grid-column: span 7;
+	}
+
+	.photo-item:nth-child(6n + 2),
+	.photo-item:nth-child(6n + 3),
+	.photo-item:nth-child(6n + 5),
+	.photo-item:nth-child(6n + 6) {
+		grid-column: span 5;
+	}
+
+	.photo-btn {
+		display: block;
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		border: none;
+		background: none;
+		cursor: zoom-in;
+	}
+
+	.photo-btn img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		min-height: 220px;
+		object-fit: cover;
+		transition: transform 0.3s ease, filter 0.3s ease;
+	}
+
+	.photo-btn:hover img,
+	.photo-btn:focus-visible img {
+		transform: scale(1.04);
+		filter: brightness(1.07);
+	}
+
+	.photo-btn:focus-visible {
+		outline: 3px solid var(--orange);
+		outline-offset: 2px;
+	}
+
+	/* ── Lightbox ───────────────────────────────────────────────────────── */
+	.lightbox {
+		position: fixed;
+		inset: 0;
+		z-index: 1000;
+		background: rgba(10, 14, 26, 0.92);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1.5rem;
+	}
+
+	.lightbox[hidden] {
+		display: none;
+	}
+
+	.lightbox-img {
+		max-width: 100%;
+		max-height: 90vh;
+		border-radius: 0.5rem;
+		box-shadow: 0 16px 64px rgba(0, 0, 0, 0.6);
+		object-fit: contain;
+	}
+
+	.lightbox-close {
+		position: absolute;
+		top: 1.2rem;
+		right: 1.4rem;
+		background: none;
+		border: none;
+		color: #fff;
+		font-size: 1.5rem;
+		line-height: 1;
+		cursor: pointer;
+		padding: 0.4rem 0.6rem;
+		border-radius: 0.3rem;
+	}
+
+	.lightbox-close:hover,
+	.lightbox-close:focus-visible {
+		background: rgba(255, 255, 255, 0.12);
+		outline: none;
+	}
+
+	/* ── Responsive ─────────────────────────────────────────────────────── */
+	@media (max-width: 680px) {
+		.gallery-hero {
+			grid-template-columns: 1fr;
+		}
+
+		.gallery-hero-art {
+			display: none;
+		}
+
+		.photo-item,
+		.photo-item:nth-child(6n + 1),
+		.photo-item:nth-child(6n + 2),
+		.photo-item:nth-child(6n + 3),
+		.photo-item:nth-child(6n + 4),
+		.photo-item:nth-child(6n + 5),
+		.photo-item:nth-child(6n + 6) {
+			grid-column: span 12;
+		}
+	}
+</style>
