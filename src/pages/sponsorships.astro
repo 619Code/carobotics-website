@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import SponsorsGrid from '../components/SponsorsGrid.astro';
 import PageHero from '../components/PageHero.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout
@@ -23,7 +24,7 @@ import PageHero from '../components/PageHero.astro';
 			>
 				<div class="btn-row">
 					<a class="btn btn-primary" href="#tiers">View Sponsorship Tiers</a>
-					<a class="btn btn-secondary" href="/contact">Contact Us</a>
+					<a class="btn btn-secondary" href={base + "/contact"}>Contact Us</a>
 				</div>
 			</PageHero>
 
@@ -218,11 +219,11 @@ import PageHero from '../components/PageHero.astro';
 							before the competition season begins.
 						</p>
 						<div class="btn-row" style="margin-top: 1.2rem;">
-							<a class="btn btn-primary" href="/contact">Get in Touch</a>
+									<a class="btn btn-primary" href={base + "/contact"}>Get in Touch</a>
 						</div>
 						<p class="individual-note">
 							Not representing a company? Individual donations of any amount are just as meaningful —
-							<a href="/donations">donate personally here</a>.
+									<a href={base + "/donations"}>donate personally here</a>.
 						</p>
 					</div>
 					<dl class="how-details">

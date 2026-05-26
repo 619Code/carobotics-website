@@ -9,6 +9,7 @@ const entries = (await getCollection('news')).sort(
 );
 
 const toSlug = (id: string) => id.replace(/\.(md|mdx)$/, '');
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Team 619 News | Cavalier Robotics" description="Latest updates from Team 619.">
@@ -33,7 +34,7 @@ const toSlug = (id: string) => id.replace(/\.(md|mdx)$/, '');
               </p>
               <h2>{entry.data.title}</h2>
               <p>{entry.data.excerpt}</p>
-              <a href={`/news/${toSlug(entry.id)}/`}>Read article</a>
+              <a href={`${base}/news/${toSlug(entry.id)}/`}>Read article</a>
             </div>
           </article>
         ))}

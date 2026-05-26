@@ -6,6 +6,7 @@ import { getEntry } from 'astro:content';
 const page = await getEntry('pages', 'home');
 if (!page) throw new Error('Missing home page content in src/content/pages/home.md');
 const home = page.data;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const socialIcons: Record<string, string> = {
 	facebook: `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>`,
@@ -21,7 +22,7 @@ const getIcon = (label: string) => socialIcons[label.toLowerCase()] ?? '';
 			<h2 class="section-heading" style="margin:0 0 0.5rem;">Get In Touch</h2>
 			<p>Questions? Want to join the team or sponsor us? We'd love to hear from you.</p>
 			<div class="btn-row" style="margin-top:1rem;">
-				<a class="btn btn-primary" href="/contact">Contact Us</a>
+				<a class="btn btn-primary" href={base + "/contact"}>Contact Us</a>
 			</div>
 		</div>
 		<dl class="contact-list">

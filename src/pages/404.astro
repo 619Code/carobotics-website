@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import duckWithWrench from '../assets/artwork/duck-with-wrench.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout
@@ -28,8 +29,8 @@ import TopNav from '../components/TopNav.astro';
 						Looks like this page took a wrong turn at the pit. Let's get you back on the field.
 					</p>
 					<div class="btn-row">
-						<a class="btn btn-primary" href="/">Back to Home</a>
-						<a class="btn btn-secondary" href="/contact">Contact Us</a>
+						<a class="btn btn-primary" href={base + "/"}>Back to Home</a>
+						<a class="btn btn-secondary" href={base + "/contact"}>Contact Us</a>
 					</div>
 				</div>
 			</section>

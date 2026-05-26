@@ -2,16 +2,19 @@
 import { Image } from 'astro:assets';
 import brandLogo from '../assets/branding/full-colored-on-transparent.png';
 // No props — all nav links are site-wide constants
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const { pathname } = Astro.url;
-const is = (href: string) =>
-	href === '/'
-		? pathname === '/'
-		: pathname === href || pathname.startsWith(href + '/');
+const is = (href: string) => {
+	const full = base + href;
+	return href === '/'
+		? pathname === full
+		: pathname === full || pathname.startsWith(full + '/');
+};
 ---
 
 <header class="top-nav glass-card reveal" transition:persist>
 	<div class="nav-bar">
-		<a href="/" class="brand" aria-label="Cavalier Robotics Home">
+		<a href={base + "/"} class="brand" aria-label="Cavalier Robotics Home">
 			<Image
 				class="brand-logo"
 				src={brandLogo}
@@ -31,12 +34,12 @@ const is = (href: string) =>
 	</div>
 
 	<nav class="nav-links" id="primary-nav" aria-label="Primary navigation">
-		<a href="/about" aria-current={is('/about') ? 'page' : undefined}>About</a>
-		<a href="/gallery" aria-current={is('/gallery') ? 'page' : undefined}>Gallery</a>
-		<a href="/sponsorships" aria-current={is('/sponsorships') ? 'page' : undefined}>Sponsorships</a>
-		<a href="/calendar" aria-current={is('/calendar') ? 'page' : undefined}>Calendar</a>
-		<a href="/contact" aria-current={is('/contact') ? 'page' : undefined}>Contact</a>
-		<a href="/donations" class="nav-donate" aria-current={is('/donations') ? 'page' : undefined}>Donate</a>
+		<a href={base + "/about"} aria-current={is('/about') ? 'page' : undefined}>About</a>
+		<a href={base + "/gallery"} aria-current={is('/gallery') ? 'page' : undefined}>Gallery</a>
+		<a href={base + "/sponsorships"} aria-current={is('/sponsorships') ? 'page' : undefined}>Sponsorships</a>
+		<a href={base + "/calendar"} aria-current={is('/calendar') ? 'page' : undefined}>Calendar</a>
+		<a href={base + "/contact"} aria-current={is('/contact') ? 'page' : undefined}>Contact</a>
+		<a href={base + "/donations"} class="nav-donate" aria-current={is('/donations') ? 'page' : undefined}>Donate</a>
 	</nav>
 </header>
 

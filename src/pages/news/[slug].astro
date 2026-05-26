@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import TopNav from '../../components/TopNav.astro';
 import ContactFooter from '../../components/ContactFooter.astro';
 import { getCollection, render } from 'astro:content';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 export async function getStaticPaths() {
   const entries = await getCollection('news');
@@ -36,7 +37,7 @@ const { Content } = await render(entry);
       <div class="content">
         <Content />
       </div>
-      <a class="back-link" href="/news">Back to all updates</a>
+      <a class="back-link" href={base + "/news"}>Back to all updates</a>
     </article>
     <ContactFooter />
   </div>

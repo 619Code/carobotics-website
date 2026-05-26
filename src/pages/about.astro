@@ -8,6 +8,7 @@ import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import ContactFooter from '../components/ContactFooter.astro';
 import PageHero from '../components/PageHero.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="About Us | Cavalier Robotics Team 619" description="Learn about Cavalier Robotics Team 619, our FIRST Robotics program, and the benefits of joining.">
@@ -22,7 +23,7 @@ import PageHero from '../components/PageHero.astro';
 				art={heroArt}
 			>
 				<div class="btn-row">
-					<a class="btn btn-primary" href="/contact">Join the Team</a>
+					<a class="btn btn-primary" href={base + "/contact"}>Join the Team</a>
 				</div>
 			</PageHero>
 

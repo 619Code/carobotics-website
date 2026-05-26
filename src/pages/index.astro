@@ -20,6 +20,7 @@ const news = (await getCollection('news'))
 	.slice(0, 2);
 
 const toSlug = (id: string) => id.replace(/\.(md|mdx)$/, '');
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const home = page.data;
 ---
@@ -36,8 +37,8 @@ const home = page.data;
 					<p class="hero-tagline">{home.tagline}</p>
 					<p class="hero-mission">{home.mission}</p>
 					<div class="btn-row">
-						<a class="btn btn-primary" href={home.ctaHref}>{home.ctaLabel}</a>
-						<a class="btn btn-secondary" href={home.secondaryCtaHref}>{home.secondaryCtaLabel}</a>
+						<a class="btn btn-primary" href={home.ctaHref.startsWith('/') ? base + home.ctaHref : home.ctaHref}>{home.ctaLabel}</a>
+						<a class="btn btn-secondary" href={home.secondaryCtaHref.startsWith('/') ? base + home.secondaryCtaHref : home.secondaryCtaHref}>{home.secondaryCtaLabel}</a>
 					</div>
 				</div>
 
@@ -110,7 +111,7 @@ const home = page.data;
 								</p>
 								<h3>{entry.data.title}</h3>
 								<p>{entry.data.excerpt}</p>
-								<a href={`/news/${toSlug(entry.id)}/`}>Read more</a>
+								<a href={`${base}/news/${toSlug(entry.id)}/`}>Read more</a>
 							</div>
 						</article>
 					))}
