@@ -5,9 +5,9 @@ teamNumber: Team 619
 city: Charlottesville, Virginia
 mission: Cavalier Robotics is a non-profit high school robotics team in Charlottesville. We are always on the lookout for new members who are passionate about robotics and want to build the future together.
 ctaLabel: Join Team 619
-ctaHref: "mailto:carobotics@gmail.com"
+ctaHref: "/contact"
 secondaryCtaLabel: Sponsor Our Mission
-secondaryCtaHref: "#sponsors"
+secondaryCtaHref: "/sponsorships"
 heroImage: "https://www.carobotics.org/wp-content/uploads/2026/05/cachedImage-1024x683.jpg"
 galleryImages:
   - src: "https://www.carobotics.org/wp-content/uploads/2026/05/IMG_1159-768x512.jpg"
