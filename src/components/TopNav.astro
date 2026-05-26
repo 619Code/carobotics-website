@@ -9,7 +9,7 @@ const is = (href: string) =>
 		: pathname === href || pathname.startsWith(href + '/');
 ---
 
-<header class="top-nav glass-card reveal">
+<header class="top-nav glass-card reveal" transition:persist>
 	<div class="nav-bar">
 		<a href="/" class="brand" aria-label="Cavalier Robotics Home">
 			<Image

@@ -1,4 +1,5 @@
 ---
+import ClientRouter from 'astro/components/ClientRouter.astro';
 type Props = {
 	title?: string;
 	description?: string;
@@ -40,6 +41,7 @@ const ogImage = new URL(image, Astro.site);
 		<meta name="twitter:image" content={ogImage} />
 
 		<title>{title}</title>
+		<ClientRouter />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -200,6 +202,26 @@ const ogImage = new URL(image, Astro.site);
 
 	.btn-secondary:hover {
 		background: rgba(35, 45, 75, 0.05);
+	}
+
+	/* ── Card hover lift ─────────────────────────────────────────────────── */
+	.benefit-card,
+	.skill-card,
+	.first-stat,
+	.update-card,
+	.tier-card,
+	.perk-card {
+		transition: transform 220ms ease, box-shadow 220ms ease;
+	}
+
+	.benefit-card:hover,
+	.skill-card:hover,
+	.first-stat:hover,
+	.update-card:hover,
+	.tier-card:hover,
+	.perk-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 10px 28px rgba(18, 24, 39, 0.13);
 	}
 
 	/* ── Navigation ──────────────────────────────────────────────────────── */
@@ -421,16 +443,56 @@ const ogImage = new URL(image, Astro.site);
 				transform: translateY(0);
 			}
 		}
+
+		/* ── Scroll-reveal ───────────────────────────────────────────────── */
+		.scroll-reveal {
+			opacity: 0;
+			transform: translateY(22px);
+			transition: opacity 0.55s ease, transform 0.55s ease;
+		}
+
+		.scroll-reveal.in-view {
+			opacity: 1;
+			transform: none;
+		}
 	}
 </style>
 
 <script>
-	const nav = document.querySelector('.top-nav');
-	if (nav) {
-		const onScroll = () => {
-			nav.classList.toggle('scrolled', window.scrollY > 40);
-		};
-		window.addEventListener('scroll', onScroll, { passive: true });
-		onScroll(); // apply correct state on initial load
-	}
+	// Re-run setup after every View Transition navigation
+	document.addEventListener('astro:page-load', () => {
+		// ── Nav scroll glass effect ──────────────────────────────────────
+		const nav = document.querySelector('.top-nav');
+		if (nav) {
+			const onScroll = () => {
+				nav.classList.toggle('scrolled', window.scrollY > 40);
+			};
+			window.addEventListener('scroll', onScroll, { passive: true });
+			onScroll();
+		}
+
+		// ── Scroll-triggered reveal ──────────────────────────────────────
+		if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			const targets = document.querySelectorAll(
+				'.section:not(.reveal):not(.reveal-delay)'
+			);
+
+			const observer = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('in-view');
+							observer.unobserve(entry.target);
+						}
+					});
+				},
+				{ threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+			);
+
+			targets.forEach((el) => {
+				el.classList.add('scroll-reveal');
+				observer.observe(el);
+			});
+		}
+	});
 </script>
