@@ -1,9 +1,10 @@
 backend:
   name: github
-  repo: your-org-or-user/your-repo-name
+  repo: 619Code/carobotics-website
   branch: main
+  auth_type: pkce
+  app_id: YOUR_GITHUB_OAUTH_APP_CLIENT_ID
 
-local_backend: true
 
 media_folder: public/uploads
 public_folder: /uploads
