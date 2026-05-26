@@ -1,9 +1,9 @@
 ---
-import { Image } from 'astro:assets';
 import heroArt from '../assets/artwork/person-holding-wrench-619.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import SponsorsGrid from '../components/SponsorsGrid.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <Layout
@@ -15,29 +15,17 @@ import SponsorsGrid from '../components/SponsorsGrid.astro';
 
 		<main>
 			<!-- ── Hero ──────────────────────────────────────────────────────── -->
-			<section class="sponsor-hero glass-card section reveal-delay">
-				<div class="sponsor-hero-copy">
-					<span class="chip">FRC Team 619 • 501(c)(3) Non-Profit</span>
-					<h1>Sponsor Our Mission</h1>
-					<p class="lead">
-						Cavalier Robotics was founded in 2001 to fill the pre-college STEM education void
-						in Central Virginia. Today, over 25 students and mentors work side-by-side to
-						build robots, compete nationally, and carry that experience into STEM careers.
-						Your sponsorship makes all of it possible.
-					</p>
-					<div class="btn-row">
-						<a class="btn btn-primary" href="#tiers">View Sponsorship Tiers</a>
-						<a class="btn btn-secondary" href="/contact">Contact Us</a>
-					</div>
+			<PageHero
+				chip="FRC Team 619 • 501(c)(3) Non-Profit"
+				title="Sponsor Our Mission"
+				lead="Cavalier Robotics was founded in 2001 to fill the pre-college STEM education void in Central Virginia. Today, over 25 students and mentors work side-by-side to build robots, compete nationally, and carry that experience into STEM careers. Your sponsorship makes all of it possible."
+				art={heroArt}
+			>
+				<div class="btn-row">
+					<a class="btn btn-primary" href="#tiers">View Sponsorship Tiers</a>
+					<a class="btn btn-secondary" href="/contact">Contact Us</a>
 				</div>
-				<Image
-					class="sponsor-hero-art"
-					src={heroArt}
-					alt=""
-					aria-hidden="true"
-					loading="eager"
-				/>
-			</section>
+			</PageHero>
 
 			<!-- ── Current sponsors ───────────────────────────────────────────── -->
 			<SponsorsGrid />
@@ -282,37 +270,6 @@ import SponsorsGrid from '../components/SponsorsGrid.astro';
 	.site-footer a:hover { text-decoration: underline; }
 
 	/* ── Hero ──────────────────────────────────────────────────────────── */
-	.sponsor-hero {
-		margin-top: 1.2rem;
-		padding: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
-		display: grid;
-		grid-template-columns: 1fr auto;
-		gap: 2rem;
-		align-items: center;
-		overflow: hidden;
-		border-top: 3px solid var(--orange);
-	}
-
-	.sponsor-hero h1 {
-		font-size: clamp(2rem, 1.4rem + 2.5vw, 3.2rem);
-		color: var(--blue);
-		margin-bottom: 0.9rem;
-	}
-
-	.lead {
-		color: var(--ink-muted);
-		font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem);
-		line-height: 1.65;
-		margin-bottom: 1.4rem;
-	}
-
-	.sponsor-hero-art {
-		height: clamp(10rem, 8rem + 6vw, 17rem);
-		width: auto;
-		display: block;
-		filter: drop-shadow(0 6px 18px rgba(18, 24, 39, 0.12));
-	}
-
 	/* ── Impact stats ──────────────────────────────────────────────────── */
 	.impact-grid {
 		display: grid;
@@ -593,14 +550,6 @@ import SponsorsGrid from '../components/SponsorsGrid.astro';
 	}
 
 	@media (max-width: 900px) {
-		.sponsor-hero {
-			grid-template-columns: 1fr;
-		}
-
-		.sponsor-hero-art {
-			display: none;
-		}
-
 		.impact-grid,
 		.pillars-grid {
 			grid-template-columns: repeat(2, 1fr);

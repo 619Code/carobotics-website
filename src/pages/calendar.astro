@@ -1,8 +1,8 @@
 ---
-import { Image } from 'astro:assets';
 import calendarArt from '../assets/artwork/duck-riding-robot-2026-comp-year.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <Layout
@@ -14,23 +14,13 @@ import TopNav from '../components/TopNav.astro';
 
 		<main>
 			<!-- ── Hero ──────────────────────────────────────────────────────── -->
-			<section class="calendar-hero glass-card section reveal-delay">
-				<div class="calendar-hero-copy">
-					<span class="chip">Team Schedule</span>
-					<h1>Calendar</h1>
-					<p class="lead">
-						Stay up to date with team meetings, build season milestones, competition dates, and
-						community events.
-					</p>
-				</div>
-				<Image
-					class="calendar-hero-art"
-					src={calendarArt}
-					alt=""
-					aria-hidden="true"
-					loading="eager"
-				/>
-			</section>
+			<PageHero
+				chip="Team Schedule"
+				title="Calendar"
+				lead="Stay up to date with team meetings, build season milestones, competition dates, and community events."
+				art={calendarArt}
+				artHeight="clamp(7rem, 5rem + 5vw, 11rem)"
+			/>
 
 			<!-- ── Calendar embed ────────────────────────────────────────────── -->
 			<section class="section">
@@ -81,30 +71,6 @@ import TopNav from '../components/TopNav.astro';
 
 <style>
 	/* ── Hero ──────────────────────────────────────────────────────────── */
-	.calendar-hero {
-		margin-top: 1.2rem;
-		padding: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
-		display: grid;
-		grid-template-columns: 1fr auto;
-		gap: 2rem;
-		align-items: center;
-		overflow: hidden;
-		border-top: 3px solid var(--orange);
-	}
-
-	.calendar-hero h1 {
-		font-size: clamp(2rem, 1.4rem + 2.5vw, 3.2rem);
-		color: var(--blue);
-		margin-bottom: 0.9rem;
-	}
-
-	.calendar-hero-art {
-		height: clamp(10rem, 8rem + 6vw, 17rem);
-		width: auto;
-		display: block;
-		filter: drop-shadow(0 6px 18px rgba(18, 24, 39, 0.12));
-	}
-
 	/* ── Calendar embed wrapper ────────────────────────────────────────── */
 	.calendar-wrap {
 		padding: 1.25rem;
@@ -147,14 +113,6 @@ import TopNav from '../components/TopNav.astro';
 
 	/* ── Responsive ─────────────────────────────────────────────────────── */
 	@media (max-width: 720px) {
-		.calendar-hero {
-			grid-template-columns: 1fr;
-		}
-
-		.calendar-hero-art {
-			display: none;
-		}
-
 		.calendar-wrap iframe {
 			min-height: 480px;
 		}

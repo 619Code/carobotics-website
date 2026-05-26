@@ -1,10 +1,10 @@
 ---
-import { Image } from 'astro:assets';
 import galleryArt from '../assets/artwork/duck-riding-robot-2026-comp-year.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import ContactFooter from '../components/ContactFooter.astro';
 import { getCollection } from 'astro:content';
+import PageHero from '../components/PageHero.astro';
 
 const page = (await getCollection('pages')).find((entry) => entry.id === 'home');
 
@@ -24,29 +24,20 @@ const images = page.data.galleryImages;
 
 		<main>
 			<!-- ── Hero ──────────────────────────────────────────────────────── -->
-			<section class="gallery-hero glass-card section reveal-delay">
-				<div class="gallery-hero-copy">
-					<span class="chip">Team Photos</span>
-					<h1>Gallery</h1>
-					<p class="lead">
-						A look inside Team 619 — from the shop floor to the competition arena.
-					</p>
-				</div>
-				<Image
-					class="gallery-hero-art"
-					src={galleryArt}
-					alt=""
-					aria-hidden="true"
-					loading="eager"
-				/>
-			</section>
+			<PageHero
+				chip="Team Photos"
+				title="Gallery"
+				lead="A look inside Team 619 — from the shop floor to the competition arena."
+				art={galleryArt}
+				artHeight="clamp(7rem, 5rem + 5vw, 11rem)"
+			/>
 
 			<!-- ── Photo grid ─────────────────────────────────────────────── -->
 			<section class="section">
 				<div class="photo-grid">
 					{images.map((image, i) => (
 						<figure
-							class="photo-item glass-card"
+							class="photo-item"
 							data-index={i}
 						>
 							<button
@@ -111,60 +102,26 @@ const images = page.data.galleryImages;
 </script>
 
 <style>
-	/* ── Hero ──────────────────────────────────────────────────────────── */
-	.gallery-hero {
-		margin-top: 1.2rem;
-		padding: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
-		display: grid;
-		grid-template-columns: 1fr auto;
-		gap: 2rem;
-		align-items: center;
-		border-top: 3px solid var(--orange);
-		overflow: hidden;
-	}
-
-	.gallery-hero-copy {
-		display: grid;
-		gap: 0.75rem;
-	}
-
-	.gallery-hero-copy h1 {
-		font-size: clamp(2rem, 1.4rem + 3vw, 3.4rem);
-		color: var(--blue);
-		line-height: 1;
-	}
-
-	.gallery-hero-art {
-		height: clamp(8rem, 6rem + 6vw, 14rem);
-		width: auto;
-		filter: drop-shadow(0 6px 18px rgba(18, 24, 39, 0.14));
-	}
-
 	/* ── Photo grid ────────────────────────────────────────────────────── */
 	.photo-grid {
 		display: grid;
-		grid-template-columns: repeat(12, minmax(0, 1fr));
-		gap: 0.6rem;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.75rem;
 	}
 
 	.photo-item {
 		margin: 0;
 		overflow: hidden;
-		border-radius: 0.4rem;
+		border-radius: 0.75rem;
 		border: 1px solid var(--border);
+		aspect-ratio: 4 / 3;
+		background: var(--surface);
 	}
 
-	/* Alternating wide/narrow layout mirroring the homepage gallery */
-	.photo-item:nth-child(6n + 1),
-	.photo-item:nth-child(6n + 4) {
-		grid-column: span 7;
-	}
-
-	.photo-item:nth-child(6n + 2),
-	.photo-item:nth-child(6n + 3),
-	.photo-item:nth-child(6n + 5),
-	.photo-item:nth-child(6n + 6) {
-		grid-column: span 5;
+	/* First image: full-width panoramic banner */
+	.photo-item:first-child {
+		grid-column: 1 / -1;
+		aspect-ratio: 3 / 1;
 	}
 
 	.photo-btn {
@@ -181,15 +138,14 @@ const images = page.data.galleryImages;
 		display: block;
 		width: 100%;
 		height: 100%;
-		min-height: 220px;
 		object-fit: cover;
-		transition: transform 0.3s ease, filter 0.3s ease;
+		transition: transform 0.4s ease, filter 0.3s ease;
 	}
 
 	.photo-btn:hover img,
 	.photo-btn:focus-visible img {
 		transform: scale(1.04);
-		filter: brightness(1.07);
+		filter: brightness(1.08);
 	}
 
 	.photo-btn:focus-visible {
@@ -242,23 +198,24 @@ const images = page.data.galleryImages;
 	}
 
 	/* ── Responsive ─────────────────────────────────────────────────────── */
-	@media (max-width: 680px) {
-		.gallery-hero {
+	@media (max-width: 720px) {
+		.photo-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		.photo-item:first-child {
+			aspect-ratio: 16 / 9;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.photo-grid {
 			grid-template-columns: 1fr;
 		}
 
-		.gallery-hero-art {
-			display: none;
-		}
-
 		.photo-item,
-		.photo-item:nth-child(6n + 1),
-		.photo-item:nth-child(6n + 2),
-		.photo-item:nth-child(6n + 3),
-		.photo-item:nth-child(6n + 4),
-		.photo-item:nth-child(6n + 5),
-		.photo-item:nth-child(6n + 6) {
-			grid-column: span 12;
+		.photo-item:first-child {
+			aspect-ratio: 16 / 9;
 		}
 	}
 </style>

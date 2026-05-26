@@ -1,10 +1,11 @@
 ---
 import { Image } from 'astro:assets';
-import heroArt from '../assets/artwork/person-riding-619-robot.png';
 import duckSwimming from '../assets/artwork/duck-swimming-cavalier-robotics.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import ContactFooter from '../components/ContactFooter.astro';
+import PageHero from '../components/PageHero.astro';
+import heroArt from '../assets/artwork/person-riding-619-robot.png';
 ---
 
 <Layout
@@ -16,28 +17,17 @@ import ContactFooter from '../components/ContactFooter.astro';
 
 		<main>
 			<!-- ── Hero ──────────────────────────────────────────────────────── -->
-			<section class="donate-hero glass-card section reveal-delay">
-				<div class="donate-hero-copy">
-					<span class="chip">FRC Team 619 • Charlottesville, VA</span>
-					<h1>Build the Engineers<br />of Tomorrow</h1>
-					<p class="lead">
-						Every robot we build starts with a donation. Your support gives Charlottesville-area
-						high schoolers access to real engineering tools, world-class mentors, and the chance
-						to compete on a national stage — experiences that shape careers and change lives.
-					</p>
-					<div class="btn-row">
-						<a class="btn btn-primary" href="#donate-form">Donate Now</a>
-						<a class="btn btn-secondary" href="/about">About the Team</a>
-					</div>
+			<PageHero
+				chip="FRC Team 619 • Charlottesville, VA"
+				title="Build the Engineers<br />of Tomorrow"
+				lead="Every robot we build starts with a donation. Your support gives Charlottesville-area high schoolers access to real engineering tools, world-class mentors, and the chance to compete on a national stage — experiences that shape careers and change lives."
+				art={heroArt}
+			>
+				<div class="btn-row">
+					<a class="btn btn-primary" href="#donate-form">Donate Now</a>
+					<a class="btn btn-secondary" href="/about">About the Team</a>
 				</div>
-				<Image
-					class="donate-hero-art"
-					src={heroArt}
-					alt=""
-					aria-hidden="true"
-					loading="eager"
-				/>
-			</section>
+			</PageHero>
 
 			<!-- ── Impact stats ───────────────────────────────────────────────── -->
 			<section class="section" id="impact">
@@ -154,39 +144,6 @@ import ContactFooter from '../components/ContactFooter.astro';
 </Layout>
 
 <style>
-	/* ── Hero ──────────────────────────────────────────────────────────── */
-	.donate-hero {
-		margin-top: 1.2rem;
-		padding: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
-		display: grid;
-		grid-template-columns: 1fr auto;
-		gap: 2rem;
-		align-items: center;
-		overflow: hidden;
-		border-top: 3px solid var(--orange);
-	}
-
-	.donate-hero h1 {
-		font-size: clamp(2rem, 1.4rem + 2.5vw, 3.2rem);
-		color: var(--blue);
-		margin-bottom: 0.9rem;
-		line-height: 1.15;
-	}
-
-	.lead {
-		color: var(--ink-muted);
-		font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem);
-		line-height: 1.65;
-		margin-bottom: 1.4rem;
-	}
-
-	.donate-hero-art {
-		height: clamp(10rem, 8rem + 6vw, 17rem);
-		width: auto;
-		display: block;
-		filter: drop-shadow(0 6px 18px rgba(18, 24, 39, 0.12));
-	}
-
 	/* ── Impact stats ──────────────────────────────────────────────────── */
 	.impact-grid {
 		display: grid;
@@ -322,14 +279,6 @@ import ContactFooter from '../components/ContactFooter.astro';
 
 	/* ── Responsive ────────────────────────────────────────────────────── */
 	@media (max-width: 900px) {
-		.donate-hero {
-			grid-template-columns: 1fr;
-		}
-
-		.donate-hero-art {
-			display: none;
-		}
-
 		.impact-grid {
 			grid-template-columns: repeat(2, 1fr);
 		}

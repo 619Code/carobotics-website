@@ -7,6 +7,7 @@ import duckWithScrewdriver from '../assets/artwork/duck-with-screwdriver.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import ContactFooter from '../components/ContactFooter.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <Layout title="About Us | Cavalier Robotics Team 619" description="Learn about Cavalier Robotics Team 619, our FIRST Robotics program, and the benefits of joining.">
@@ -14,29 +15,17 @@ import ContactFooter from '../components/ContactFooter.astro';
 		<TopNav />
 
 		<main>
-			<!-- ── Page hero ─────────────────────────────────────────────────── -->
-			<section class="about-hero glass-card section reveal-delay">
-				<div class="about-hero-copy">
-					<span class="chip">FRC Team 619 • Charlottesville, VA</span>
-					<h1>About Cavalier Robotics</h1>
-					<p class="lead">
-						Team 619 is a non-profit high school robotics team built on passion for engineering,
-						collaboration, and community. We compete in the FIRST Robotics Competition and welcome
-						students from schools across the Charlottesville area.
-					</p>
-					<div class="btn-row">
-						<a class="btn btn-primary" href="mailto:info@carobotics.org">Join the Team</a>
-						<a class="btn btn-secondary" href="/#sponsors">Our Sponsors</a>
-					</div>
+			<PageHero
+				chip="FRC Team 619 • Charlottesville, VA"
+				title="About Cavalier Robotics"
+				lead="Team 619 is a non-profit high school robotics team built on passion for engineering, collaboration, and community. We compete in the FIRST Robotics Competition and welcome students from schools across the Charlottesville area."
+				art={heroArt}
+			>
+				<div class="btn-row">
+					<a class="btn btn-primary" href="mailto:info@carobotics.org">Join the Team</a>
+					<a class="btn btn-secondary" href="/#sponsors">Our Sponsors</a>
 				</div>
-				<Image
-					class="about-hero-art"
-					src={heroArt}
-					alt=""
-					aria-hidden="true"
-					loading="eager"
-				/>
-			</section>
+			</PageHero>
 
 			<!-- ── About the team ────────────────────────────────────────────── -->
 			<section class="section" id="team">
@@ -148,37 +137,6 @@ import ContactFooter from '../components/ContactFooter.astro';
 
 <style>
 	/* ── About hero ──────────────────────────────────────────────────────── */
-	.about-hero {
-		margin-top: 1.2rem;
-		padding: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
-		display: grid;
-		grid-template-columns: 1fr auto;
-		gap: 2rem;
-		align-items: center;
-		overflow: hidden;
-		border-top: 3px solid var(--orange);
-	}
-
-	.about-hero h1 {
-		font-size: clamp(2rem, 1.4rem + 2.5vw, 3.2rem);
-		color: var(--blue);
-		margin-bottom: 0.9rem;
-	}
-
-	.lead {
-		color: var(--ink-muted);
-		font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem);
-		line-height: 1.65;
-		margin-bottom: 1.4rem;
-	}
-
-	.about-hero-art {
-		height: clamp(10rem, 8rem + 6vw, 17rem);
-		width: auto;
-		display: block;
-		filter: drop-shadow(0 6px 18px rgba(18, 24, 39, 0.12));
-	}
-
 	/* ── Shared prose panel ──────────────────────────────────────────────── */
 	.about-panel {
 		padding: clamp(1.2rem, 1rem + 1vw, 1.8rem);
@@ -265,14 +223,6 @@ import ContactFooter from '../components/ContactFooter.astro';
 
 	/* ── Responsive ──────────────────────────────────────────────────────── */
 	@media (max-width: 900px) {
-		.about-hero {
-			grid-template-columns: 1fr;
-		}
-
-		.about-hero-art {
-			display: none;
-		}
-
 		.first-grid {
 			grid-template-columns: repeat(2, 1fr);
 		}

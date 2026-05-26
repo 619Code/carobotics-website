@@ -1,8 +1,8 @@
 ---
-import { Image } from 'astro:assets';
 import duckWithWrench from '../assets/artwork/duck-with-wrench.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
+import PageHero from '../components/PageHero.astro';
 import { getEntry } from 'astro:content';
 
 const page = await getEntry('pages', 'home');
@@ -26,23 +26,13 @@ const getIcon = (label: string) => socialIcons[label.toLowerCase()] ?? '';
 
 		<main>
 			<!-- ── Page hero ─────────────────────────────────────────────────── -->
-			<section class="contact-hero glass-card section reveal-delay">
-				<div>
-					<span class="chip">FRC Team 619 • Charlottesville, VA</span>
-					<h1>Contact Us</h1>
-					<p class="lead">
-						Whether you want to join the team, explore sponsorship, or just say hello —
-						we'd love to hear from you. Send a message below or reach us directly.
-					</p>
-				</div>
-				<Image
-					class="contact-hero-art"
-					src={duckWithWrench}
-					alt=""
-					aria-hidden="true"
-					loading="eager"
-				/>
-			</section>
+			<PageHero
+				chip="FRC Team 619 • Charlottesville, VA"
+				title="Contact Us"
+				lead="Whether you want to join the team, explore sponsorship, or just say hello — we’d love to hear from you. Send a message below or reach us directly."
+				art={duckWithWrench}
+				artHeight="clamp(8rem, 6rem + 5vw, 13rem)"
+			/>
 
 			<!-- ── Two-column layout: form + details ─────────────────────────── -->
 			<section class="section contact-layout">
@@ -350,13 +340,6 @@ const getIcon = (label: string) => socialIcons[label.toLowerCase()] ?? '';
 
 	/* ── Responsive ────────────────────────────────────────────────────── */
 	@media (max-width: 900px) {
-		.contact-hero {
-			grid-template-columns: 1fr;
-		}
-
-		.contact-hero-art {
-			display: none;
-		}
 
 		.contact-layout {
 			grid-template-columns: 1fr;

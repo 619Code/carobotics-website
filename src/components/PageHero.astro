@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+type Props = {
+	chip: string;
+	title: string;
+	lead: string;
+	art: ImageMetadata;
+	/** CSS height value for the artwork. Defaults to standard size. */
+	artHeight?: string;
+};
+
+const {
+	chip,
+	title,
+	lead,
+	art,
+	artHeight = 'clamp(10rem, 8rem + 6vw, 17rem)',
+} = Astro.props;
+---
+
+<section class="page-hero glass-card section reveal-delay">
+	<div class="page-hero-copy">
+		<span class="chip">{chip}</span>
+		<h1 set:html={title} />
+		<p class="lead">{lead}</p>
+		<slot />
+	</div>
+	<Image
+		class="page-hero-art"
+		src={art}
+		alt=""
+		aria-hidden="true"
+		loading="eager"
+		style={`--art-h: ${artHeight}`}
+	/>
+</section>
+
+<style>
+	.page-hero {
+		margin-top: 1.2rem;
+		padding: clamp(1.5rem, 1rem + 2.5vw, 2.5rem);
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 2rem;
+		align-items: center;
+		overflow: hidden;
+		border-top: 3px solid var(--orange);
+	}
+
+	.page-hero h1 {
+		font-size: clamp(2rem, 1.4rem + 2.5vw, 3.2rem);
+		color: var(--blue);
+		margin-bottom: 0.9rem;
+		line-height: 1.15;
+	}
+
+	.lead {
+		color: var(--ink-muted);
+		font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.1rem);
+		line-height: 1.65;
+		margin-bottom: 1.4rem;
+	}
+
+	.page-hero-art {
+		height: var(--art-h);
+		width: auto;
+		display: block;
+		filter: drop-shadow(0 6px 18px rgba(18, 24, 39, 0.12));
+	}
+
+	@media (max-width: 680px) {
+		.page-hero {
+			grid-template-columns: 1fr;
+		}
+
+		.page-hero-art {
+			display: none;
+		}
+	}
+</style>
