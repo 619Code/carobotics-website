@@ -21,8 +21,8 @@ const ogImage = new URL(image, Astro.site);
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonicalURL} />
@@ -64,7 +64,7 @@ const ogImage = new URL(image, Astro.site);
 		--ink:         #1c2333;
 		--ink-muted:   #4a5b74;
 		--ink-faint:   #697586;
-		--bg:          #eef2f7;
+		--bg:          #dfe6f0;
 		--surface:     #ffffff;
 		--border:      #dae0ea;
 		--shadow:      0 1px 3px rgba(18, 24, 39, 0.08), 0 4px 14px rgba(18, 24, 39, 0.05);
@@ -79,10 +79,7 @@ const ogImage = new URL(image, Astro.site);
 		margin: 0;
 		min-height: 100%;
 		color: var(--ink);
-		/* Dot-grid background — cool blueprint feel, zero warm tones */
 		background-color: var(--bg);
-		background-image: radial-gradient(circle, rgba(35, 45, 75, 0.13) 1px, transparent 1px);
-		background-size: 22px 22px;
 		font-family: 'Manrope', sans-serif;
 		line-height: 1.6;
 	}
@@ -443,18 +440,6 @@ const ogImage = new URL(image, Astro.site);
 				transform: translateY(0);
 			}
 		}
-
-		/* ── Scroll-reveal ───────────────────────────────────────────────── */
-		.scroll-reveal {
-			opacity: 0;
-			transform: translateY(22px);
-			transition: opacity 0.55s ease, transform 0.55s ease;
-		}
-
-		.scroll-reveal.in-view {
-			opacity: 1;
-			transform: none;
-		}
 	}
 </style>
 
@@ -471,28 +456,22 @@ const ogImage = new URL(image, Astro.site);
 			onScroll();
 		}
 
-		// ── Scroll-triggered reveal ──────────────────────────────────────
-		if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-			const targets = document.querySelectorAll(
-				'.section:not(.reveal):not(.reveal-delay)'
-			);
-
-			const observer = new IntersectionObserver(
-				(entries) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add('in-view');
-							observer.unobserve(entry.target);
-						}
-					});
-				},
-				{ threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-			);
-
-			targets.forEach((el) => {
-				el.classList.add('scroll-reveal');
-				observer.observe(el);
-			});
-		}
+		// ── Update active nav link ───────────────────────────────────────
+		// transition:persist keeps the nav mounted across navigations, so
+		// aria-current must be updated dynamically on every page load.
+		const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+		const path = window.location.pathname;
+		document.querySelectorAll('.nav-links a[href]').forEach((a) => {
+			const href = a.getAttribute('href') ?? '';
+			const isHome = href === base + '/';
+			const active = isHome
+				? path === href
+				: path === href || path.startsWith(href + '/');
+			if (active) {
+				a.setAttribute('aria-current', 'page');
+			} else {
+				a.removeAttribute('aria-current');
+			}
+		});
 	});
 </script>
