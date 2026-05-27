@@ -3,13 +3,13 @@ backend:
   repo: 619Code/carobotics-website
   branch: main
   auth_type: pkce
-  app_id: YOUR_GITHUB_OAUTH_APP_CLIENT_ID
+app_id: Ov23liVZq8vYUoGYCsAk
 
 
 media_folder: public/uploads
 public_folder: /uploads
 
-site_url: https://carobotics.org
+site_url: https://619code.github.io/carobotics-website
 logo_url: https://www.carobotics.org/wp-content/uploads/2026/05/Screenshot-2026-05-05-214227.png
 
 collections:
