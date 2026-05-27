@@ -64,8 +64,6 @@ contact:
   mailingAddress: P.O. Box 6434, Charlottesville, VA 22906
   workshopAddress: 706 Henry Ave., Charlottesville, VA 22903
 social:
-  - label: Facebook
-    href: "https://www.facebook.com/frc619/"
   - label: YouTube
     href: "https://www.youtube.com/@frc619"
   - label: Instagram

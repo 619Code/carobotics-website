@@ -1,0 +1,26 @@
+---
+/**
+ * Obfuscated email link — keeps mailto: out of static HTML to reduce bot harvesting.
+ * The href is assembled client-side via the global astro:page-load handler in Layout.astro.
+ */
+interface Props {
+	user: string;       // part before @
+	host: string;       // part after @
+	label?: string;     // visible text; if omitted the email address is shown (entity-encoded)
+	class?: string;
+}
+
+const { user, host, label, class: className } = Astro.props;
+
+// HTML-entity-encode every character so the address doesn't appear as plain text in source
+const entityEncode = (s: string) => [...s].map(c => `&#${c.charCodeAt(0)};`).join('');
+const displayHTML = label ?? entityEncode(`${user}@${host}`);
+---
+
+<a
+	class={['js-email', className].filter(Boolean).join(' ')}
+	href="#"
+	data-u={user}
+	data-h={host}
+	set:html={displayHTML}
+/>

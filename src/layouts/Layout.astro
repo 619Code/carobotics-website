@@ -473,5 +473,13 @@ const ogImage = new URL(image, Astro.site);
 				a.removeAttribute('aria-current');
 			}
 		});
+
+		// ── Obfuscated email links ───────────────────────────────────────
+		document.querySelectorAll('a.js-email').forEach((el) => {
+			const a = el as HTMLAnchorElement;
+			const u = a.dataset.u ?? '';
+			const h = a.dataset.h ?? '';
+			if (u && h) a.href = 'mailto:' + u + '@' + h;
+		});
 	});
 </script>

@@ -5,6 +5,7 @@ import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import ContactFooter from '../components/ContactFooter.astro';
 import PageHero from '../components/PageHero.astro';
+import EmailLink from '../components/EmailLink.astro';
 import heroArt from '../assets/artwork/person-riding-619-robot.png';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
@@ -132,7 +133,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 							dreaming bigger.
 						</p>
 						<div class="btn-row" style="margin-top: 1rem;">
-							<a class="btn btn-secondary" href="mailto:info@carobotics.org">Get in Touch</a>
+							<EmailLink class="btn btn-secondary" user="info" host="carobotics.org" label="Get in Touch" />
 							<a class="btn btn-secondary" href={base + "/about"}>Meet the Team</a>
 						</div>
 					</div>
