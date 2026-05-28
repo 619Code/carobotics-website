@@ -24,7 +24,7 @@ const {
 	<div class="page-hero-copy">
 		<span class="chip">{chip}</span>
 		<h1 set:html={title} />
-		<p class="lead">{lead}</p>
+		<p class="lead" set:html={lead} />
 		<slot />
 	</div>
 	<Image

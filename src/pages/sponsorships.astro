@@ -1,10 +1,11 @@
----
+﻿---
 import heroArt from '../assets/artwork/person-holding-wrench-619.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import SponsorsGrid from '../components/SponsorsGrid.astro';
 import PageHero from '../components/PageHero.astro';
 import EmailLink from '../components/EmailLink.astro';
+import { Handshake, Signal, Sprout, Receipt, Lightbulb, Users, Globe, HeartHandshake } from '@lucide/astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
@@ -42,11 +43,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 					</div>
 					<div class="glass-card impact-stat">
 						<span class="stat-number">81%</span>
-						<span class="stat-label">FIRST alumni who declare a STEM major</span>
+						<span class="stat-label"><em>FIRST</em><sup>®</sup> alumni who declare a STEM major</span>
 					</div>
 					<div class="glass-card impact-stat">
 						<span class="stat-number">3×</span>
-						<span class="stat-label">More likely female FIRST alumni pursue STEM</span>
+						<span class="stat-label">More likely female <em>FIRST</em><sup>®</sup> alumni pursue STEM</span>
 					</div>
 					<div class="glass-card impact-stat">
 						<span class="stat-number">2001</span>
@@ -77,28 +78,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 					</div>
 					<ul class="glass-card promise-list">
 						<li>
-							<span class="promise-icon">🤝</span>
+							<span class="promise-icon"><Handshake size={28} stroke-width={1.5} /></span>
 							<div>
 								<strong>Community Impact</strong>
 								<p>Directly invest in Central Virginia's next generation of engineers and STEM leaders.</p>
 							</div>
 						</li>
 						<li>
-							<span class="promise-icon">📣</span>
+							<span class="promise-icon"><Signal size={28} stroke-width={1.5} /></span>
 							<div>
 								<strong>Consumer &amp; Media Exposure</strong>
 								<p>Your brand reaches students, families, educators, and competition audiences locally and nationally.</p>
 							</div>
 						</li>
 						<li>
-							<span class="promise-icon">🌱</span>
+							<span class="promise-icon"><Sprout size={28} stroke-width={1.5} /></span>
 							<div>
 								<strong>Positive Community Relationships</strong>
 								<p>Align your company with education, innovation, and gracious professionalism in your own backyard.</p>
 							</div>
 						</li>
 						<li>
-							<span class="promise-icon">🧾</span>
+							<span class="promise-icon"><Receipt size={28} stroke-width={1.5} /></span>
 							<div>
 								<strong>Tax Deduction</strong>
 								<p>As a 501(c)(3) organisation, your contribution is fully tax-deductible.</p>
@@ -184,25 +185,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 			<!-- ── FIRST pillars ───────────────────────────────────────────────── -->
 			<section class="section" id="first-values">
-				<h2 class="section-heading">What FIRST Stands For</h2>
+				<h2 class="section-heading">FIRST Robotics Core Values</h2>
 				<div class="pillars-grid">
 					<div class="glass-card pillar-card">
-						<span class="pillar-icon">💡</span>
+						<span class="pillar-icon"><Lightbulb size={32} stroke-width={1.5} /></span>
 						<h3>Innovation</h3>
 						<p>Each year our students devise creative solutions to new challenges — prototyping, testing, and redesigning until the robot works.</p>
 					</div>
 					<div class="glass-card pillar-card">
-						<span class="pillar-icon">🤲</span>
+						<span class="pillar-icon"><Users size={32} stroke-width={1.5} /></span>
 						<h3>Teamwork</h3>
 						<p>Students from different schools and backgrounds come together, sharing ideas and learning from each other toward a common goal.</p>
 					</div>
 					<div class="glass-card pillar-card">
-						<span class="pillar-icon">🌍</span>
+						<span class="pillar-icon"><Globe size={32} stroke-width={1.5} /></span>
 						<h3>Community Impact</h3>
 						<p>We reach out to the younger generation through local events, demos, and outreach — growing STEM interest across Central Virginia.</p>
 					</div>
 					<div class="glass-card pillar-card">
-						<span class="pillar-icon">🏆</span>
+						<span class="pillar-icon"><HeartHandshake size={32} stroke-width={1.5} /></span>
 						<h3>Gracious Professionalism®</h3>
 						<p>Hard-fought competition always goes hand-in-hand with kindness and respect — on and off the playing field.</p>
 					</div>
@@ -343,9 +344,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 	}
 
 	.promise-icon {
-		font-size: 1.3rem;
+		color: var(--orange);
 		flex-shrink: 0;
-		line-height: 1.2;
+		line-height: 1;
 	}
 
 	.promise-list strong {
@@ -467,7 +468,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 	}
 
 	.pillar-icon {
-		font-size: 1.6rem;
+		color: var(--orange);
 		line-height: 1;
 	}
 

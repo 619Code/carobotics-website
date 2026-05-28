@@ -1,4 +1,4 @@
----
+﻿---
 import { Image } from 'astro:assets';
 import duckSwimming from '../assets/artwork/duck-swimming-cavalier-robotics.png';
 import Layout from '../layouts/Layout.astro';
@@ -6,6 +6,7 @@ import TopNav from '../components/TopNav.astro';
 import ContactFooter from '../components/ContactFooter.astro';
 import PageHero from '../components/PageHero.astro';
 import EmailLink from '../components/EmailLink.astro';
+import { Wrench, Medal, BookOpen } from '@lucide/astro';
 import heroArt from '../assets/artwork/person-riding-619-robot.png';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
@@ -59,7 +60,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				<h2 class="section-heading">Where Your Money Goes</h2>
 				<div class="fund-grid">
 					<article class="glass-card fund-card">
-						<div class="fund-icon">⚙️</div>
+						<div class="fund-icon"><Wrench size={36} stroke-width={1.5} /></div>
 						<h3>Tools &amp; Equipment</h3>
 						<p>
 							Power tools, CNC machines, 3D printers, electronics, and the raw materials needed
@@ -67,15 +68,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 						</p>
 					</article>
 					<article class="glass-card fund-card">
-						<div class="fund-icon">🏆</div>
+						<div class="fund-icon"><Medal size={36} stroke-width={1.5} /></div>
 						<h3>Competition Fees &amp; Travel</h3>
 						<p>
 							Registration, transportation, and lodging for regional events — and, when we qualify,
-							the FIRST Robotics World Championship. No student is left behind due to cost.
+							the <em>FIRST</em><sup>®</sup> Robotics World Championship. No student is left behind due to cost.
 						</p>
 					</article>
 					<article class="glass-card fund-card">
-						<div class="fund-icon">📚</div>
+						<div class="fund-icon"><BookOpen size={36} stroke-width={1.5} /></div>
 						<h3>Outreach &amp; Education</h3>
 						<p>
 							Demos, workshops, and community events that bring robotics to younger students and
@@ -89,11 +90,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 			<section class="section">
 				<blockquote class="glass-card donate-quote">
 					<p>
-						"Robotics gave me real engineering confidence before I ever set foot in a college
-						classroom. The mentors, the late nights in the shop, the pressure of competition —
-						I wouldn't trade any of it."
+						"Cavalier Robotics introduced me to what it meant to be an engineer and gave me the
+						confidence and tools that I needed to take the next step in my technical career."
 					</p>
-					<footer>— Team 619 Alumni</footer>
+					<footer>— Daniel Woodworth / Team 619 Alumni / Mechanical Engineer</footer>
 				</blockquote>
 			</section>
 
@@ -132,10 +132,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 							Your generosity keeps our shop running, our robots competing, and our students
 							dreaming bigger.
 						</p>
-						<div class="btn-row" style="margin-top: 1rem;">
-							<EmailLink class="btn btn-secondary" user="info" host="carobotics.org" label="Get in Touch" />
-							<a class="btn btn-secondary" href={base + "/about"}>Meet the Team</a>
-						</div>
 					</div>
 				</div>
 			</section>
@@ -196,7 +192,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 	}
 
 	.fund-icon {
-		font-size: 1.8rem;
+		color: var(--orange);
 		line-height: 1;
 	}
 
