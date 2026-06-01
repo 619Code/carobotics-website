@@ -3,7 +3,7 @@ backend:
   repo: 619Code/carobotics-website
   branch: main
   auth_type: pkce
-  app_id: Ov23liVZq8vYUoGYCsAk
+  app_id: Ov23ct10fwUuHJIhYc6a
 
 
 media_folder: public/uploads
