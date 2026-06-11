@@ -2,7 +2,8 @@ backend:
   name: github
   repo: 619Code/carobotics-website
   branch: main
-  site_domain: chic-wisp-8c84a6.netlify.app
+  base_url: https://decap-proxy.carobotics.workers.dev
+  auth_endpoint: /auth
 
 
 media_folder: public/uploads
