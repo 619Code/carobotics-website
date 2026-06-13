@@ -32,7 +32,7 @@ const { Content } = await render(entry);
         })}
       </p>
       <h1>{entry.data.title}</h1>
-      {entry.data.image && <img src={entry.data.image} alt={entry.data.imageAlt ?? entry.data.title} loading="eager" />}
+      {entry.data.image && <img src={base + entry.data.image} alt={entry.data.imageAlt ?? entry.data.title} loading="eager" />}
       <p class="excerpt">{entry.data.excerpt}</p>
       <div class="content">
         <Content />

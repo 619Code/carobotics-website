@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const page = await getEntry('pages', 'home');
 if (!page) throw new Error('Missing home page content');
@@ -11,7 +12,7 @@ const home = page.data;
 	<div class="sponsors-grid glass-card">
 		{home.sponsors.map((sponsor) => (
 			<div class="sponsor-item">
-				<img src={sponsor.src} alt={sponsor.alt} loading="lazy" />
+				<img src={base + sponsor.src} alt={sponsor.alt} loading="lazy" />
 			</div>
 		))}
 	</div>

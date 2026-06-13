@@ -39,14 +39,14 @@ const home = page.data;
 				</div>
 
 				<div class="hero-media">
-					<img src={home.heroImage} alt="Cavalier Robotics team members collaborating" loading="eager" />
+					<img src={base + home.heroImage} alt="Cavalier Robotics team members collaborating" loading="eager" />
 				</div>
 			</section>
 
 			<!-- Mascot floats between hero and skills, overlapping both -->
 			<img
 				class="mascot-float"
-				src="/uploads/person-riding-619-robot.png"
+				src={base + "/uploads/person-riding-619-robot.png"}
 				alt=""
 				aria-hidden="true"
 				loading="eager"
@@ -56,14 +56,14 @@ const home = page.data;
 				<h2 class="section-heading">Through Our Team You Will Learn</h2>
 				<div class="skills-grid">
 					<article class="glass-card skill-card">
-						<img class="skill-art" src="/uploads/duck-with-wrench.png" alt="" aria-hidden="true" loading="lazy" />
+						<img class="skill-art" src={base + "/uploads/duck-with-wrench.png"} alt="" aria-hidden="true" loading="lazy" />
 						<h3>Engineering and Build</h3>
 						<ul>
 							{home.engineeringSkills.map((skill) => <li>{skill}</li>)}
 						</ul>
 					</article>
 					<article class="glass-card skill-card">
-						<img class="skill-art" src="/uploads/duck-with-screwdriver.png" alt="" aria-hidden="true" loading="lazy" />
+						<img class="skill-art" src={base + "/uploads/duck-with-screwdriver.png"} alt="" aria-hidden="true" loading="lazy" />
 						<h3>Leadership and Strategy</h3>
 						<ul>
 							{home.leadershipSkills.map((skill) => <li>{skill}</li>)}
@@ -81,7 +81,7 @@ const home = page.data;
 				<div class="gallery-grid">
 					{home.galleryImages.map((image) => (
 						<figure class="glass-card gallery-item">
-							<img src={image.src} alt={image.alt} loading="lazy" />
+							<img src={base + image.src} alt={image.alt} loading="lazy" />
 						</figure>
 					))}
 				</div>
@@ -95,7 +95,7 @@ const home = page.data;
 					{news.map((entry) => (
 						<article class="glass-card update-card">
 							{entry.data.image && (
-								<img src={entry.data.image} alt={entry.data.imageAlt ?? entry.data.title} loading="lazy" />
+						<img src={base + entry.data.image} alt={entry.data.imageAlt ?? entry.data.title} loading="lazy" />
 							)}
 							<div>
 								<p class="update-date">
