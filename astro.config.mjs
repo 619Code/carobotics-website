@@ -8,7 +8,7 @@ const env = loadEnv(process.env.NODE_ENV ?? 'development', process.cwd(), '');
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://www.carobotics.org',
+	site: 'https://carobotics.org',
 	base: env.BASE_PATH || '/',
 	integrations: [mdx(), sitemap()],
 });
