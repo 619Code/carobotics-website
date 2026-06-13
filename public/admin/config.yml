@@ -10,7 +10,7 @@ media_folder: public/uploads
 public_folder: /uploads
 
 site_url: https://619code.github.io/carobotics-website
-logo_url: https://619code.github.io/carobotics-website/artwork/person-holding-wrench-619.png
+logo_url: https://619code.github.io/carobotics-website/uploads/person-holding-wrench-619.png
 
 collections:
   - name: pages

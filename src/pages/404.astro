@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import duckWithWrench from '../assets/artwork/duck-with-wrench.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -15,9 +13,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 		<main>
 			<section class="not-found glass-card section reveal-delay">
-				<Image
+				<img
 					class="not-found-art"
-					src={duckWithWrench}
+					src="/uploads/duck-with-wrench.png"
 					alt=""
 					aria-hidden="true"
 					loading="eager"

@@ -7,7 +7,7 @@ This project is a redesigned Team 619 website built for maintainability and low 
 - Astro for site generation
 - Markdown and MDX content collections
 - Decap CMS for non-technical content editing
-- Cloudflare Pages ready
+- Deployed to GitHub Pages via GitHub Actions
 
 ## Local Development
 
@@ -28,14 +28,6 @@ Decap admin route:
 http://localhost:4321/admin/
 ```
 
-For local CMS backend proxy (recommended while testing Decap):
-
-```sh
-npm run cms:proxy
-```
-
-Run this in a separate terminal while `npm run dev` is active.
-
 ## Content Editing
 
 - Homepage content: `src/content/pages/home.md`
@@ -48,21 +40,60 @@ npm run build
 npm run preview
 ```
 
-## Cloudflare Pages Deployment
+## GitHub Pages Deployment
 
-Use these settings in Cloudflare Pages:
+Deployment is handled automatically by `.github/workflows/deploy.yml` on every push to `main`. It uses the [withastro/action](https://github.com/withastro/action) to build and deploy to GitHub Pages.
 
-- Framework preset: `Astro`
-- Build command: `npm run build`
+- Node version: `22`
+- Build command: `astro build` (via `withastro/action`)
 - Build output directory: `dist`
-- Node version: `24`
 
-## Decap GitHub Backend Setup
+## Decap CMS
 
-Before production CMS usage, update:
+The Decap admin panel is available at `/admin`. It is configured in `public/admin/config.yml` to use the `619Code/carobotics-website` GitHub repo on the `main` branch. Editing through the CMS creates commits directly to the repo, which triggers a new deployment.
 
-- `public/admin/config.yml`
-	- `backend.repo` to your real GitHub repo (`owner/repo`)
-	- `backend.branch` to your default branch
+## Decap CMS OAuth via Cloudflare Workers
 
-After that, `/admin` will create and commit content updates directly to Git.
+GitHub Pages does not support server-side OAuth, so authentication for Decap CMS is handled by a Cloudflare Worker acting as an OAuth proxy. The deployed proxy lives at `https://decap-proxy.carobotics.workers.dev`.
+
+### How it works
+
+1. The Decap admin panel redirects the user to the proxy's `/auth?provider=github` endpoint.
+2. The proxy redirects to GitHub's OAuth authorization page.
+3. GitHub redirects back to the proxy's `/callback?provider=github` endpoint with an auth code.
+4. The proxy exchanges the code for an access token and passes it back to the Decap admin panel.
+
+### Re-deploying or modifying the proxy
+
+The proxy is based on [sterlingwes/decap-proxy](https://github.com/sterlingwes/decap-proxy) and is deployed separately from this repo.
+
+1. Clone the proxy repo: `git clone https://github.com/sterlingwes/decap-proxy`
+2. Copy the sample config: `cp wrangler.toml.sample wrangler.toml`
+3. Set the worker `name` in `wrangler.toml` to `decap-proxy` (or your preferred name)
+4. Login to Cloudflare: `npx wrangler login`
+5. Set the OAuth secrets from your [GitHub OAuth App](https://github.com/settings/developers):
+   ```sh
+   npx wrangler secret put GITHUB_OAUTH_ID
+   npx wrangler secret put GITHUB_OAUTH_SECRET
+   ```
+6. Deploy: `npx wrangler deploy`
+
+### GitHub OAuth App settings
+
+The OAuth App is registered under the `619Code` GitHub account at [github.com/settings/developers](https://github.com/settings/developers) with:
+
+- **Homepage URL:** `https://decap-proxy.carobotics.workers.dev`
+- **Authorization callback URL:** `https://decap-proxy.carobotics.workers.dev/callback`
+
+### Decap config
+
+`public/admin/config.yml` points to the proxy:
+
+```yaml
+backend:
+  name: github
+  repo: 619Code/carobotics-website
+  branch: main
+  base_url: https://decap-proxy.carobotics.workers.dev
+  auth_endpoint: /auth
+```

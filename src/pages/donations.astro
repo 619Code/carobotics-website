@@ -1,13 +1,10 @@
 ﻿---
-import { Image } from 'astro:assets';
-import duckSwimming from '../assets/artwork/duck-swimming-cavalier-robotics.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import ContactFooter from '../components/ContactFooter.astro';
 import PageHero from '../components/PageHero.astro';
 import EmailLink from '../components/EmailLink.astro';
 import { Wrench, Medal, BookOpen } from '@lucide/astro';
-import heroArt from '../assets/artwork/person-riding-619-robot.png';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
@@ -24,7 +21,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				chip="FRC Team 619 • Charlottesville, VA"
 				title="Build the Engineers<br />of Tomorrow"
 				lead="Every robot we build starts with a donation. Your support gives Charlottesville-area high schoolers access to real engineering tools, world-class mentors, and the chance to compete on a national stage — experiences that shape careers and change lives."
-				art={heroArt}
+				art="/uploads/person-riding-619-robot.png"
 			>
 				<div class="btn-row">
 					<a class="btn btn-primary" href="#donate-form">Donate Now</a>
@@ -118,9 +115,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 			<!-- ── Thank you ──────────────────────────────────────────────────── -->
 			<section class="section">
 				<div class="thankyou-panel glass-card">
-					<Image
+					<img
 						class="thankyou-art"
-						src={duckSwimming}
+						src="/uploads/duck-swimming-cavalier-robotics.png"
 						alt=""
 						aria-hidden="true"
 						loading="lazy"

@@ -1,5 +1,4 @@
 ---
-import duckWithWrench from '../assets/artwork/duck-with-wrench.png';
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import PageHero from '../components/PageHero.astro';
@@ -31,7 +30,7 @@ const getIcon = (label: string) => socialIcons[label.toLowerCase()] ?? '';
 				chip="FRC Team 619 • Charlottesville, VA"
 				title="Contact Us"
 				lead="Whether you want to join the team, explore sponsorship, or just say hello — we’d love to hear from you. Send a message below or reach us directly."
-				art={duckWithWrench}
+				art="/uploads/duck-with-wrench.png"
 				artHeight="clamp(8rem, 6rem + 5vw, 13rem)"
 			/>
 
@@ -374,6 +373,8 @@ const getIcon = (label: string) => socialIcons[label.toLowerCase()] ?? '';
 					headers: { 'Accept': 'application/json' },
 				});
 				if (res.ok) {
+					submitBtn.disabled = false;
+					submitBtn.textContent = 'Send Message';
 					form.hidden = true;
 					successEl.hidden = false;
 				} else {

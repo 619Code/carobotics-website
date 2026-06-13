@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import brandLogo from '../assets/branding/full-colored-on-transparent.png';
 // No props — all nav links are site-wide constants
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const { pathname } = Astro.url;
@@ -15,9 +13,9 @@ const is = (href: string) => {
 <header class="top-nav glass-card reveal" transition:persist>
 	<div class="nav-bar">
 		<a href={base + "/"} class="brand" aria-label="Cavalier Robotics Home">
-			<Image
+			<img
 				class="brand-logo"
-				src={brandLogo}
+				src="/uploads/full-colored-on-transparent.png"
 				alt="Cavalier Robotics logo"
 				loading="eager"
 			/>

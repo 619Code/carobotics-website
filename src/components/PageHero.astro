@@ -1,12 +1,9 @@
 ---
-import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
-
 type Props = {
 	chip: string;
 	title: string;
 	lead: string;
-	art: ImageMetadata;
+	art: string;
 	/** CSS height value for the artwork. Defaults to standard size. */
 	artHeight?: string;
 };
@@ -27,7 +24,7 @@ const {
 		<p class="lead" set:html={lead} />
 		<slot />
 	</div>
-	<Image
+	<img
 		class="page-hero-art"
 		src={art}
 		alt=""
