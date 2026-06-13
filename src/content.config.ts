@@ -13,10 +13,10 @@ const pages = defineCollection({
     ctaHref: z.string(),
     secondaryCtaLabel: z.string(),
     secondaryCtaHref: z.string(),
-    heroImage: z.string().url(),
+    heroImage: z.string(),
     galleryImages: z.array(
       z.object({
-        src: z.string().url(),
+        src: z.string(),
         alt: z.string(),
       }),
     ),
@@ -24,7 +24,7 @@ const pages = defineCollection({
     leadershipSkills: z.array(z.string()),
     sponsors: z.array(
       z.object({
-        src: z.string().url(),
+        src: z.string(),
         alt: z.string(),
       }),
     ),
@@ -49,7 +49,7 @@ const news = defineCollection({
     title: z.string(),
     excerpt: z.string(),
     publishDate: z.coerce.date(),
-    image: z.string().url().optional(),
+    image: z.string().optional(),
     imageAlt: z.string().optional(),
   }),
 });

@@ -10,19 +10,19 @@ ctaLabel: Join Team 619
 ctaHref: /contact
 secondaryCtaLabel: Sponsor Our Mission
 secondaryCtaHref: /sponsorships
-heroImage: https://www.carobotics.org/wp-content/uploads/2026/05/cachedImage-1024x683.jpg
+heroImage: /uploads/cachedImage-1024x683.jpg
 galleryImages:
-  - src: https://www.carobotics.org/wp-content/uploads/2026/05/IMG_1159-768x512.jpg
+  - src: /uploads/IMG_1159-768x512.jpg
     alt: Team members working in the shop
-  - src: https://www.carobotics.org/wp-content/uploads/2026/05/IMG_1116-768x512.jpg
+  - src: /uploads/IMG_1116-768x512.jpg
     alt: Students presenting robot work
-  - src: https://www.carobotics.org/wp-content/uploads/2026/05/IMG_0905-768x512.jpg
+  - src: /uploads/IMG_0905-768x512.jpg
     alt: Drive team and pit operations
-  - src: https://www.carobotics.org/wp-content/uploads/2026/05/IMG_7519-768x512.jpg
+  - src: /uploads/IMG_7519-768x512.jpg
     alt: Build season collaboration
-  - src: https://www.carobotics.org/wp-content/uploads/2026/05/IMG_7364-768x512.jpg
+  - src: /uploads/IMG_7364-768x512.jpg
     alt: Robot development in progress
-  - src: https://www.carobotics.org/wp-content/uploads/2026/05/Glen-Allen_8623-768x549.jpg
+  - src: /uploads/Glen-Allen_8623-768x549.jpg
     alt: Competition action shot
 engineeringSkills:
   - Mechanical Engineering
@@ -44,21 +44,21 @@ leadershipSkills:
   - Leadership Skills
   - Data Analysis
 sponsors:
-  - src: https://www.carobotics.org/wp-content/uploads/2026/05/Screenshot-2026-05-05-213317.png
+  - src: /uploads/Screenshot-2026-05-05-213317.png
     alt: Sponsor logo
-  - src: https://www.carobotics.org/wp-content/uploads/2024/08/emersonLogo-1-e1629855595461.jpeg
+  - src: /uploads/emersonLogo-1-e1629855595461.jpeg
     alt: Emerson
-  - src: https://www.carobotics.org/wp-content/uploads/2026/05/Screenshot-2026-05-05-213559.png
+  - src: /uploads/Screenshot-2026-05-05-213559.png
     alt: Sponsor logo
-  - src: https://www.carobotics.org/wp-content/uploads/2026/05/images.jpg
+  - src: /uploads/images.jpg
     alt: Sponsor logo
-  - src: https://www.carobotics.org/wp-content/uploads/2024/08/OIP.jpg
+  - src: /uploads/OIP.jpg
     alt: Sponsor logo
-  - src: https://www.carobotics.org/wp-content/uploads/2024/08/axiom.png
+  - src: /uploads/axiom.png
     alt: Axiom
-  - src: https://www.carobotics.org/wp-content/uploads/2024/08/geneHaasWhite-1024x962-1.jpg
+  - src: /uploads/geneHaasWhite-1024x962-1.jpg
     alt: Haas
-  - src: https://www.carobotics.org/wp-content/uploads/2024/08/LDB-Color-logo-transparent.png
+  - src: /uploads/LDB-Color-logo-transparent.png
     alt: Sponsor logo
 contact:
   email: info@carobotics.org

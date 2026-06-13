@@ -2,7 +2,7 @@
 title: Build Season Kickoff
 excerpt: Team 619 launched build season with rapid prototyping, design reviews, and early controls integration.
 publishDate: 2026-01-12
-image: "https://www.carobotics.org/wp-content/uploads/2026/05/IMG_6814-768x512.jpg"
+image: "/uploads/IMG_6814-768x512.jpg"
 imageAlt: "Students reviewing robot design"
 ---
 Build season opened with focused sprint planning and subsystem ownership. Students split into drivetrain, manipulator, electrical, and software groups, then met nightly for integration check-ins.
