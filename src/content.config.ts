@@ -2,7 +2,7 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const pages = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/pages' }),
+  loader: glob({ pattern: 'home.md', base: './src/content/pages' }),
   schema: z.object({
     title: z.string(),
     tagline: z.string(),
@@ -43,6 +43,70 @@ const pages = defineCollection({
   }),
 });
 
+const aboutPage = defineCollection({
+  loader: glob({ pattern: 'about.md', base: './src/content/pages' }),
+  schema: z.object({
+    heroChip: z.string(),
+    heroTitle: z.string(),
+    heroLead: z.string(),
+    heroArt: z.string(),
+    teamNumber: z.string(),
+    foundedYear: z.string(),
+    yearsCompeting: z.string(),
+    buildSeason: z.string(),
+    firstOrgUrl: z.string(),
+  }),
+});
+
+const calendarPage = defineCollection({
+  loader: glob({ pattern: 'calendar.md', base: './src/content/pages' }),
+  schema: z.object({
+    heroChip: z.string(),
+    heroTitle: z.string(),
+    heroLead: z.string(),
+    heroArt: z.string(),
+    artHeight: z.string().optional(),
+    calendarEmbedSrc: z.string(),
+    googleCalendarUrl: z.string(),
+    icalUrl: z.string(),
+  }),
+});
+
+const contactPage = defineCollection({
+  loader: glob({ pattern: 'contact.md', base: './src/content/pages' }),
+  schema: z.object({
+    heroChip: z.string(),
+    heroTitle: z.string(),
+    heroLead: z.string(),
+    heroArt: z.string(),
+    formspreeEndpoint: z.string(),
+  }),
+});
+
+const galleryPage = defineCollection({
+  loader: glob({ pattern: 'gallery.md', base: './src/content/pages' }),
+  schema: z.object({
+    heroChip: z.string(),
+    heroTitle: z.string(),
+    heroLead: z.string(),
+    heroArt: z.string(),
+    artHeight: z.string().optional(),
+  }),
+});
+
+const donationsPage = defineCollection({
+  loader: glob({ pattern: 'donations.md', base: './src/content/pages' }),
+  schema: z.object({
+    heroChip: z.string(),
+    heroTitle: z.string(),
+    heroLead: z.string(),
+    heroArt: z.string(),
+    zeffyFormUrl: z.string(),
+    quote: z.string(),
+    quoteAuthor: z.string(),
+  }),
+});
+
 const news = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/news' }),
   schema: z.object({
@@ -54,4 +118,4 @@ const news = defineCollection({
   }),
 });
 
-export const collections = { pages, news };
+export const collections = { pages, aboutPage, calendarPage, contactPage, galleryPage, donationsPage, news };

@@ -66,6 +66,65 @@ collections:
               - { label: URL, name: href, widget: string }
           - { label: Intro Body, name: body, widget: markdown }
 
+      - file: src/content/pages/about.md
+        label: About Page
+        name: about
+        fields:
+          - { label: Hero Chip, name: heroChip, widget: string }
+          - { label: Hero Title, name: heroTitle, widget: string }
+          - { label: Hero Lead, name: heroLead, widget: text }
+          - { label: Hero Art URL, name: heroArt, widget: string }
+          - { label: Team Number, name: teamNumber, widget: string }
+          - { label: Founded Year, name: foundedYear, widget: string }
+          - { label: Years Competing, name: yearsCompeting, widget: string }
+          - { label: Build Season Duration, name: buildSeason, widget: string }
+          - { label: FIRST Org URL, name: firstOrgUrl, widget: string }
+
+      - file: src/content/pages/calendar.md
+        label: Calendar Page
+        name: calendar
+        fields:
+          - { label: Hero Chip, name: heroChip, widget: string }
+          - { label: Hero Title, name: heroTitle, widget: string }
+          - { label: Hero Lead, name: heroLead, widget: text }
+          - { label: Hero Art URL, name: heroArt, widget: string }
+          - { label: Art Height (CSS), name: artHeight, widget: string, required: false }
+          - { label: Google Calendar Embed URL, name: calendarEmbedSrc, widget: string }
+          - { label: Subscribe — Google Calendar URL, name: googleCalendarUrl, widget: string }
+          - { label: Subscribe — iCal URL, name: icalUrl, widget: string }
+
+      - file: src/content/pages/contact.md
+        label: Contact Page
+        name: contact
+        fields:
+          - { label: Hero Chip, name: heroChip, widget: string }
+          - { label: Hero Title, name: heroTitle, widget: string }
+          - { label: Hero Lead, name: heroLead, widget: text }
+          - { label: Hero Art URL, name: heroArt, widget: string }
+          - { label: Formspree Endpoint URL, name: formspreeEndpoint, widget: string }
+
+      - file: src/content/pages/gallery.md
+        label: Gallery Page
+        name: gallery
+        fields:
+          - { label: Hero Chip, name: heroChip, widget: string }
+          - { label: Hero Title, name: heroTitle, widget: string }
+          - { label: Hero Lead, name: heroLead, widget: text }
+          - { label: Hero Art URL, name: heroArt, widget: string }
+          - { label: Art Height (CSS), name: artHeight, widget: string, required: false }
+
+      - file: src/content/pages/donations.md
+        label: Donations Page
+        name: donations
+        fields:
+          - { label: Hero Chip, name: heroChip, widget: string }
+          - { label: Hero Title, name: heroTitle, widget: string }
+          - { label: Hero Lead, name: heroLead, widget: text }
+          - { label: Hero Art URL, name: heroArt, widget: string }
+          - { label: Zeffy Donation Form URL, name: zeffyFormUrl, widget: string }
+          - { label: Testimonial Quote, name: quote, widget: text }
+          - { label: Quote Attribution, name: quoteAuthor, widget: string }
+
   - name: news
     label: News
     folder: src/content/news

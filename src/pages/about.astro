@@ -3,7 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import ContactFooter from '../components/ContactFooter.astro';
 import PageHero from '../components/PageHero.astro';
+import { getEntry } from 'astro:content';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const aboutEntry = await getEntry('aboutPage', 'about');
+if (!aboutEntry) throw new Error('Missing about page content in src/content/pages/about.md');
+const about = aboutEntry.data;
 ---
 
 <Layout title="About Us | Cavalier Robotics Team 619" description="Learn about Cavalier Robotics Team 619, our FIRST Robotics program, and the benefits of joining.">
@@ -12,10 +17,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 		<main>
 			<PageHero
-				chip="FRC Team 619 • Charlottesville, VA"
-				title="About Cavalier Robotics"
-				lead="Team 619 is a non-profit high school robotics team built on passion for engineering, collaboration, and community. We compete in the <em>FIRST</em><sup>®</sup> Robotics Competition and welcome students from schools across the Charlottesville area."
-				art="/uploads/person-riding-robot-on-water.png"
+				chip={about.heroChip}
+				title={about.heroTitle}
+				lead={about.heroLead}
+				art={about.heroArt}
 			>
 				<div class="btn-row">
 					<a class="btn btn-primary" href={base + "/contact"}>Join the Team</a>
@@ -49,19 +54,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				<h2 class="section-heading">About FIRST</h2>
 				<div class="first-grid">
 					<div class="glass-card first-stat">
-						<span class="stat-number">619</span>
+						<span class="stat-number">{about.teamNumber}</span>
 						<span class="stat-label">Team Number</span>
 					</div>
 					<div class="glass-card first-stat">
-						<span class="stat-number">2001</span>
+						<span class="stat-number">{about.foundedYear}</span>
 						<span class="stat-label">Founded</span>
 					</div>
 					<div class="glass-card first-stat">
-						<span class="stat-number">20+</span>
+						<span class="stat-number">{about.yearsCompeting}</span>
 						<span class="stat-label">Years Competing</span>
 					</div>
 					<div class="glass-card first-stat">
-						<span class="stat-number">6 wks</span>
+						<span class="stat-number">{about.buildSeason}</span>
 						<span class="stat-label">Build Season</span>
 					</div>
 				</div>
@@ -84,7 +89,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 						community partnerships and promoting STEM locally.
 					</p>
 					<div class="btn-row" style="margin-top: 0.5rem;">
-						<a class="btn btn-secondary" href="https://www.firstinspires.org/robotics/frc" target="_blank" rel="noreferrer">
+						<a class="btn btn-secondary" href={about.firstOrgUrl} target="_blank" rel="noreferrer">
 							Learn More About <em>FIRST</em><sup>®</sup>
 						</a>
 					</div>

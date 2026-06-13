@@ -2,6 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import PageHero from '../components/PageHero.astro';
+import { getEntry } from 'astro:content';
+
+const calEntry = await getEntry('calendarPage', 'calendar');
+if (!calEntry) throw new Error('Missing calendar page content in src/content/pages/calendar.md');
+const cal = calEntry.data;
 ---
 
 <Layout
@@ -14,11 +19,11 @@ import PageHero from '../components/PageHero.astro';
 		<main>
 			<!-- ── Hero ──────────────────────────────────────────────────────── -->
 			<PageHero
-				chip="Team Schedule"
-				title="Calendar"
-				lead="Stay up to date with team meetings, build season milestones, competition dates, and community events."
-				art="/uploads/duck-riding-robot-2026-comp-year.png"
-				artHeight="clamp(7rem, 5rem + 5vw, 11rem)"
+				chip={cal.heroChip}
+				title={cal.heroTitle}
+				lead={cal.heroLead}
+				art={cal.heroArt}
+				artHeight={cal.artHeight}
 			/>
 
 			<!-- ── Calendar embed ────────────────────────────────────────────── -->
@@ -26,7 +31,7 @@ import PageHero from '../components/PageHero.astro';
 				<div class="calendar-wrap glass-card">
 					<iframe
 						title="Cavalier Robotics Team Calendar"
-						src="https://calendar.google.com/calendar/embed?height=700&wkst=1&bgcolor=%23eef2f7&ctz=America%2FNew_York&src=Y2Fyb2JvdGljc0BnbWFpbC5jb20&src=ZG5kajhyYTgyMmQwbDBycnMzNW1taXEwZDRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YnFwOWc0Z3YxZHNhZjlvcWdsa21hdHVncG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23A79B8E&color=%23F09300&color=%23009688&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=1&mode=MONTH"
+						src={cal.calendarEmbedSrc}
 						loading="lazy"
 						frameborder="0"
 						scrolling="no"
@@ -45,7 +50,7 @@ import PageHero from '../components/PageHero.astro';
 					<div class="btn-row">
 						<a
 							class="btn btn-primary"
-							href="https://calendar.google.com/calendar/u/0?cid=Y2Fyb2JvdGljc0BnbWFpbC5jb20"
+							href={cal.googleCalendarUrl}
 							target="_blank"
 							rel="noreferrer"
 						>
@@ -53,7 +58,7 @@ import PageHero from '../components/PageHero.astro';
 						</a>
 						<a
 							class="btn btn-secondary"
-							href="webcal://calendar.google.com/calendar/ical/carobotics%40gmail.com/public/basic.ics"
+							href={cal.icalUrl}
 						>
 							Subscribe via iCal
 						</a>

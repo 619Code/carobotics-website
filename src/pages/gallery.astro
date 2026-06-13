@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import ContactFooter from '../components/ContactFooter.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import PageHero from '../components/PageHero.astro';
 
 const page = (await getCollection('pages')).find((entry) => entry.id === 'home');
@@ -10,6 +10,10 @@ const page = (await getCollection('pages')).find((entry) => entry.id === 'home')
 if (!page) {
 	throw new Error('Missing home page content in src/content/pages/home.md');
 }
+
+const galleryEntry = await getEntry('galleryPage', 'gallery');
+if (!galleryEntry) throw new Error('Missing gallery page content in src/content/pages/gallery.md');
+const gallery = galleryEntry.data;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const images = page.data.galleryImages;
@@ -25,11 +29,11 @@ const images = page.data.galleryImages;
 		<main>
 			<!-- ── Hero ──────────────────────────────────────────────────────── -->
 			<PageHero
-				chip="Team Photos"
-				title="Gallery"
-				lead="A look inside Team 619 — from the shop floor to the competition arena."
-				art="/uploads/duck-riding-robot-2026-comp-year.png"
-				artHeight="clamp(7rem, 5rem + 5vw, 11rem)"
+				chip={gallery.heroChip}
+				title={gallery.heroTitle}
+				lead={gallery.heroLead}
+				art={gallery.heroArt}
+				artHeight={gallery.artHeight}
 			/>
 
 			<!-- ── Photo grid ─────────────────────────────────────────────── -->
