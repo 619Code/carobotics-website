@@ -1,6 +1,6 @@
 ---
 title: Cavalier Robotics
-tagline: Fun team culture. Serious engineering. Competitive robotics.test
+tagline: Fun team culture. Serious engineering. Competitive robotics.
 teamNumber: Team 619
 city: Charlottesville, Virginia
 mission: Cavalier Robotics is a non-profit high school robotics team in
