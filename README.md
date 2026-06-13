@@ -97,3 +97,22 @@ backend:
   base_url: https://decap-proxy.carobotics.workers.dev
   auth_endpoint: /auth
 ```
+
+## Upgrading Decap CMS
+
+The Decap CMS script in `public/admin/index.html` is loaded from unpkg with a [Subresource Integrity (SRI)](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) hash. This prevents the browser from executing tampered CDN content. **The hash must be updated whenever the version number changes.**
+
+### Steps to upgrade
+
+1. Update the version in the `<script>` `src` URL in `public/admin/index.html`.
+2. Compute the new SRI hash for the updated file (PowerShell):
+   ```powershell
+   $response = Invoke-WebRequest -Uri "https://unpkg.com/decap-cms@<VERSION>/dist/decap-cms.js" -UseBasicParsing
+   $hash = [System.Security.Cryptography.SHA384]::Create().ComputeHash($response.RawContentStream)
+   "sha384-" + [Convert]::ToBase64String($hash)
+   ```
+   Or with bash/openssl:
+   ```sh
+   curl -sL https://unpkg.com/decap-cms@<VERSION>/dist/decap-cms.js | openssl dgst -sha384 -binary | openssl base64 -A | sed 's/^/sha384-/'
+   ```
+3. Replace the `integrity="sha384-..."` attribute value in `public/admin/index.html` with the new hash.
