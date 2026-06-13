@@ -8,6 +8,8 @@ type Props = {
 	artHeight?: string;
 };
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const {
 	chip,
 	title,
@@ -26,7 +28,7 @@ const {
 	</div>
 	<img
 		class="page-hero-art"
-		src={art}
+		src={art.startsWith('/') ? base + art : art}
 		alt=""
 		aria-hidden="true"
 		loading="eager"
