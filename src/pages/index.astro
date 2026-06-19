@@ -95,7 +95,9 @@ const home = page.data;
 					{news.map((entry) => (
 						<article class="glass-card update-card">
 							{entry.data.image && (
-						<img src={base + entry.data.image} alt={entry.data.imageAlt ?? entry.data.title} loading="lazy" />
+								<div class="update-img-wrap">
+									<img src={base + entry.data.image} alt={entry.data.imageAlt ?? entry.data.title} loading="lazy" />
+								</div>
 							)}
 							<div>
 								<p class="update-date">
@@ -277,12 +279,20 @@ const home = page.data;
 		border-left: 3px solid var(--orange);
 	}
 
-	.update-card img {
+	.update-img-wrap {
+		min-height: 120px;
+		align-self: stretch;
+		border-radius: 0.3rem;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.update-img-wrap img {
+		position: absolute;
+		inset: 0;
 		width: 100%;
 		height: 100%;
-		min-height: 120px;
 		object-fit: cover;
-		border-radius: 0.3rem;
 		display: block;
 	}
 
@@ -352,6 +362,10 @@ const home = page.data;
 
 		.update-card {
 			grid-template-columns: 1fr;
+		}
+
+		.update-img-wrap {
+			min-height: 180px;
 		}
 	}
 </style>
