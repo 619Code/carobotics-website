@@ -23,7 +23,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <div class="news-list">
         {entries.map((entry) => (
           <article class="glass-card news-card">
-            {entry.data.image && <img src={entry.data.image} alt={entry.data.imageAlt ?? entry.data.title} loading="lazy" />}
+            {entry.data.image && (
+              <div class="news-img-wrap">
+                <img src={entry.data.image} alt={entry.data.imageAlt ?? entry.data.title} loading="lazy" />
+              </div>
+            )}
             <div>
               <p class="date">
                 {entry.data.publishDate.toLocaleDateString('en-US', {
@@ -64,14 +68,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     border-left: 3px solid var(--blue-mid);
   }
 
-  .news-card img {
+  .news-img-wrap {
+    min-height: 160px;
+    align-self: stretch;
+    border-radius: 0.3rem;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border);
+  }
+
+  .news-img-wrap img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    min-height: 160px;
     object-fit: cover;
-    border-radius: 0.3rem;
     display: block;
-    border: 1px solid var(--border);
   }
 
   .news-card h2 {
@@ -110,6 +122,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   @media (max-width: 780px) {
     .news-card {
       grid-template-columns: 1fr;
+    }
+
+    .news-img-wrap {
+      min-height: 200px;
     }
   }
 </style>
