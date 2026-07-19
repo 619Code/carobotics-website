@@ -1,0 +1,78 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<aside class="open-house-banner glass-card">
+  <div class="banner-copy">
+    <span class="chip">Upcoming Event</span>
+    <h2>Open House — Come See What We Build</h2>
+    <p class="banner-lead">
+      Curious about joining Team 619? Stop by our lab on <strong>August 1st from 2&ndash;5 PM</strong> for an open house built for prospective members. Meet the team, tour our workspace, and get a real look at the robots, competitions, and capabilities that make Cavalier Robotics what it is.
+    </p>
+    <p class="banner-meta">Saturday, August 1st &bull; 2:00 PM &ndash; 5:00 PM &bull; Cavalier Robotics Lab</p>
+  </div>
+  <img
+    class="banner-img"
+    src={`${base}/uploads/2026-robot-image.jpg`}
+    alt="Cavalier Robotics 2026 robot"
+    loading="eager"
+  />
+</aside>
+
+<style>
+  .open-house-banner {
+    margin-top: 1.2rem;
+    padding: clamp(1.5rem, 1rem + 2.5vw, 2.2rem);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    overflow: hidden;
+    border-top: 4px solid var(--orange);
+    position: relative;
+  }
+
+  .banner-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .open-house-banner h2 {
+    font-size: clamp(1.5rem, 1.1rem + 2vw, 2.2rem);
+    color: var(--blue);
+    line-height: 1.1;
+  }
+
+  .banner-lead {
+    color: var(--ink-muted);
+    font-size: clamp(0.9rem, 0.82rem + 0.4vw, 1.05rem);
+    max-width: 58ch;
+  }
+
+  .banner-meta {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--orange-dark);
+  }
+
+  .banner-img {
+    height: clamp(9rem, 7rem + 6vw, 15rem);
+    width: auto;
+    object-fit: contain;
+    border-radius: 0.25rem;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 600px) {
+    .open-house-banner {
+      grid-template-columns: 1fr;
+    }
+
+    .banner-img {
+      display: none;
+    }
+  }
+</style>

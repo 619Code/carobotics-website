@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import TopNav from '../components/TopNav.astro';
 import ContactFooter from '../components/ContactFooter.astro';
 import SponsorsGrid from '../components/SponsorsGrid.astro';
+import OpenHouseBanner from '../components/OpenHouseBanner.astro';
 import { getCollection } from 'astro:content';
 
 const page = (await getCollection('pages')).find((entry) => entry.id === 'home');
@@ -24,6 +25,7 @@ const home = page.data;
 <Layout title={`${home.title} | ${home.teamNumber}`} description={home.mission}>
 	<div class="page-wrap">
 		<TopNav />
+		<OpenHouseBanner />
 
 		<main id="top">
 			<section class="hero glass-card section reveal-delay" id="about">
