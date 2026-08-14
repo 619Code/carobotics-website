@@ -4,17 +4,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 <aside class="open-house-banner glass-card">
   <div class="banner-copy">
-    <span class="chip">Upcoming Event</span>
-    <h2>Open House — Come See What We Build</h2>
+    <span class="chip">Now Recruiting</span>
+    <h2>Fall Training Has Started &mdash; Join Us!</h2>
     <p class="banner-lead">
-      Curious about joining Team 619? Stop by our lab on <strong>August 1st from 2&ndash;5 PM</strong> for an open house built for prospective members. Meet the team, tour our workspace, and get a real look at the robots, competitions, and capabilities that make Cavalier Robotics what it is.
+      FRC 101 is underway &mdash; open to all team members, prospective members, and anyone interested in mentoring.
     </p>
-    <p class="banner-meta">Saturday, August 1st &bull; 2:00 PM &ndash; 5:00 PM &bull; Cavalier Robotics Lab</p>
+    <p class="banner-meta">Wednesdays 6:30&ndash;9 PM &bull; Saturdays 1&ndash;5 PM &bull; <a href="/calendar">Full calendar &rarr;</a></p>
   </div>
   <img
     class="banner-img"
-    src={`${base}/uploads/2026-robot-image.jpg`}
-    alt="Cavalier Robotics 2026 robot"
+    src={`${base}/uploads/prototype-small.jpg`}
+    alt="Cavalier Robotics robot prototype"
     loading="eager"
   />
 </aside>
@@ -26,7 +26,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 2rem;
-    align-items: center;
+    align-items: stretch;
     overflow: hidden;
     border-top: 4px solid var(--orange);
     position: relative;
@@ -47,7 +47,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   .banner-lead {
     color: var(--ink-muted);
     font-size: clamp(0.9rem, 0.82rem + 0.4vw, 1.05rem);
-    max-width: 58ch;
+    max-width: 68ch;
   }
 
   .banner-meta {
@@ -58,12 +58,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     color: var(--orange-dark);
   }
 
+  .banner-meta a {
+    color: inherit;
+  }
+
   .banner-img {
-    height: clamp(9rem, 7rem + 6vw, 15rem);
-    width: auto;
-    object-fit: contain;
+    height: 100%;
+    width: clamp(9rem, 7rem + 6vw, 15rem);
+    object-fit: cover;
+    object-position: center;
     border-radius: 0.25rem;
-    flex-shrink: 0;
+    display: block;
   }
 
   @media (max-width: 600px) {
